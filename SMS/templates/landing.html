@@ -1,0 +1,294 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!--Custom css-->
+    <link rel="stylesheet" type="text/css" href={% static 'style.css' %}> 
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+
+    <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript for Materialize CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400&display=swap" rel="stylesheet">
+    <link href={% static 'style.css' %} rel="stylesheet">
+
+
+    <title>bluefootprint {% block title %}{% endblock title %}</title>
+  </head>
+
+  <body>
+    {% include 'main/includes/messages.html' %}
+
+
+
+
+
+
+    
+
+    </div>
+    
+    <div class="hero-image">
+      <div class="hero-text">
+        <h1><img src={% static "imgs/icon.png" %}></h1>
+        <h2>Kick Start Your Career!</h2>
+        <p class="flow-text typing-demo">Don't know where to start? don't worry! We got you!</p>
+        <p class="flow-text">Start learning in a simple click! FOR FREE!</p>
+        <a class="waves-effect waves-light btn" href="login/">Get Started!</a>
+      </div>
+    </div>
+
+
+    <br>
+    <br>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <br>
+    <br>
+    <br>
+
+
+    <div class ="section">
+      <div class = "row container" style="justify-content: center; text-align: center;">
+        <h3>Do it the <underline data-tooltip="Well, it's open for discussion, it was the right way for us!">RIGHT WAY!</underline></h3>
+        <div class="row">
+              <div class="col s12 m6 l4">
+                  <div>
+                      <div class="card hoverable">
+                          <div class="card-content">
+                              <i class="medium material-icons">adb</i>
+                              <div class="card-title" style="font-weight: bold;">Learn the technology</div>
+                              <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
+                              <p>SUMMARY</p>
+                              <br>
+                          </div>
+                      </div>
+                    </div>
+
+              </div>
+              <div class="col s12 m6 l4">
+                <div>
+                    <div class="card hoverable">
+                        <div class="card-content">
+                            <i class="medium material-icons">all_inclusive</i>
+                            <div class="card-title" style="font-weight: bold;">Keep Practising </div>
+                            <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
+                            <p>SUMMARY</p>
+                            <br>
+                        </div>
+                    </div>
+                  </div>
+
+            </div>
+            <div class="col s12 m6 l4">
+              <div>
+                  <div class="card hoverable">
+                      <div class="card-content">
+                          <i class="medium material-icons">developer_mode</i>
+                          <div class="card-title" style="font-weight: bold;">Sharpen Your Skills</div>
+                          <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
+                          <p>SUMMARY</p>
+                          <br>
+                      </div>
+                  </div>
+                </div>
+
+          </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+    <div class="section white">
+      <div class="row container">
+        
+        <h1 style="text-align: center;"> Who Are<underline data-tooltip="We, are a small web development startup!"> We?</underline></h1>
+        <p class="flow-text">
+        We are developers, and we know how hard it is, to START.
+        Believe me, STARTING is the hardest thing, after that,
+        it might not be smooth sailing, but you will be ready!
+        <br>
+        <br>
+        <underline data-tooltip="Yes you are!">YOU ARE A DEVELOPER</underline>
+        </p>
+        <p class="flow-text">Even if you don't know how to code!
+        all you need is a simple push, and that's where we come in!
+        And it's all COMPLETELY free! FOREVER!
+        
+        </p>
+        <blockquote><p>so please don't mind the ads smh</p></blockquote>
+
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+    <div class="section">
+      <div class="row container">
+        <div class="col s12 m2 10">
+          <div>
+          <img src={% static "imgs/django.png" %} style="width: 10vw;">
+        </div>
+        </div>
+        <div class="col s12 m2 10">
+          <br>
+          <div>
+            <img src={% static "imgs/angular.png" %} style="width: 10vw;">
+          </div>
+        </div>
+        <div class="col s12 m2 10">
+          <br>
+          <div>
+            <img src={% static "imgs/aspnet.jpg" %} style="width: 10vw;">
+          </div>
+        </div>
+        <div class="col s12 m2 10">
+          <br>
+          <div>
+            <img src={% static "imgs/mongodb.png" %} style="width: 10vw;">
+          </div>
+        </div>
+        <div class="col s12 m2 10">
+          <br>
+          <div>
+            <img src={% static "imgs/python.png" %} style="width: 10vw;">
+          </div>
+        </div>
+        <div class="col s12 m2 10">
+          <br>
+          <div>
+            <p class="flow-text">And more!</p>
+          </div>
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="section white">
+      <div class="row container">
+        <h1 style="text-align: center;">  <underline data-tooltip="or roadmaps">Courses</underline></h1>
+        <blockquote>
+        New <underline data-tooltip="or roadmaps">courses</underline> are still being added!
+        </blockquote>
+        <p class="flow-text">Starting is as simple as clicking a button (literally) just select a category that you wan't to learn, and get started.</p>
+
+        <div class="row" style="background-color: #25a5981e;">
+        {% for cat in categories %}
+            <div class="col s12 m6 l4">
+                <a href="app/{{cat.category_slug}}", style="color:#000">
+                    <div class="card hoverable">
+                        <div class="card-content">
+                            <div class="card-title" style="font-weight: bold;">{{cat.course_category}}</div>
+                            <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
+                            <p>{{cat.category_summary}}</p>
+                            <br>
+                            <a class="waves-effect waves-light btn" href="app/{{cat.category_slug}}">Start Learning</a>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    </div>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="section white">
+      <div class="row container">
+        <h1 style="text-align: center;"><underline data-tooltip="For real?">Not finding what you want?</underline></h1>
+        <blockquote>
+        Please be patient after filling out your request, each request is verified by hand
+        </blockquote>
+
+        <p class="flow-text">
+        Looking for something that you don't see? why don't you contact us, and we'll add it ASAP!
+        </p>
+        <a class="waves-effect waves-light btn" href="app/{{cat.category_slug}}">Contact Us</a>
+
+
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <footer class="page-footer" style="background-color: #25a599;">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Bluefootprint</h5>
+            <p class="grey-text text-lighten-4">This is a free learning platform and it aims to be free forever!</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Support</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        Made-By: vave-corp
+        </div>
+      </div>
+    </footer>
+
+
+
+    
+
+
+   
+   <!--Custom js ADD-->
+   <script type="text/javascript" src={% static 'main.js' %}></script>
+  </body>
+  <script>
+  M.AutoInit();
+
+  $(document).ready(function(){
+  $('.parallax').parallax();
+});
+$(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+        
+
+</script>
+</html>

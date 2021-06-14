@@ -2,19 +2,25 @@
 
 {% block content %}
 
-    <div class="row">
-        {% for cat in categories %}
-            <div class="col s12 m6 l4">
-                <a href="{{cat.category_slug}}", style="color:#000">
-                    <div class="card hoverable">
-                        <div class="card-content">
-                            <div class="card-title">{{cat.course_category}}</div>
-                            <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
-                            <p>{{cat.category_summary}}</p>
-                        </div>
+
+
+<h3>Ok! let's start!</h3>
+<h4>Step: 1</h4>
+<p class="flow-text">Select a <underline data-tooltip="Learn? What? Django? Or Wordpress? etc.">category!</underline></p>
+
+<div class="row">
+    {% for cat in categories %}
+        <div class="col s12 m6 l4">
+            <a href="{{cat.category_slug}}", style="color:#000">
+                <div class="card hoverable">
+                    <div class="card-content">
+                        <div class="card-title" style="font-weight: bold;">{{cat.course_category}}</div>
+                        <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
+                        <p>{{cat.category_summary}}</p>
                     </div>
-                </a>
-            </div>
-        {% endfor %}
-    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

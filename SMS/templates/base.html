@@ -17,6 +17,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript for Materialize CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400&display=swap" rel="stylesheet">
+
+
+
 
     <title>bffbook - {% block title %}{% endblock title %}</title>
   </head>
@@ -28,6 +34,7 @@
 
     <div class="container">
       <br>
+
       {% block content %}
       {% endblock content %}
     </div>
@@ -42,5 +49,14 @@
   </body>
   <script>
   M.AutoInit();
+    $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+    $(".button-collapse").sideNav();
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+        
+        
 </script>
 </html>

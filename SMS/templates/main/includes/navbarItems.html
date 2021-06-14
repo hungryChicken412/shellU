@@ -4,15 +4,17 @@
 {% url 'profiles:my-invites-view' as path_to_my_invites %}
 {% url 'profiles:invite-profiles-view' as path_to_invites %}
 {% url 'profiles:all-profiles-view' as path_to_all_profiles %}
+{% load static %}
+<link href={% static 'style.css' %} rel="stylesheet">
 
 
+<li><a href="/app"> <span class="material-icons">home</span> Home </a></li>
+<li><a href="#"><span class="material-icons">local_hospital</span> Support</a></li>
 
-<li><a href="/main">Home</a></li>
-<li><a href="#">Community</a></li>
 {% if user.is_authenticated %}
      <li><a href="/myprofile">{{user.username|title}}</a></li>
      <li><a href="/logout">Logout</a></li>
 {% else %}
-    <li><a href="/login">Login</a></li>
-    <li><a href="/register">Register</a></li>
+    <li><a href="/login"> <a href="/login"><span class="material-icons">person</span> Login</a></li>
+    <li><a href="/register"> <a href="/register"><span class="material-icons">person_add</span> Register</a></li>
 {% endif %}

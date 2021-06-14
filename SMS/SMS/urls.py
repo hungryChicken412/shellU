@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static  import static
-from .views import home_view, register, logout_request, login_request, singleSlug
+from .views import home_view, register, logout_request, login_request, singleSlug, landing
 
 
 app_name = "app"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', home_view, name="Home-View"),
+    path('', landing, name="landing"),
     path('app/<single_slug>', singleSlug, name="single_slug"),
     path('', include('profiles.urls')),
     path('tinymce/', include('tinymce.urls')),

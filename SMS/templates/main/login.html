@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <br>
-        <button class="btn" type="submit">login</button>
-    </form>
-    <br>
-    If you don'talready have an account <a href="/register" target="blank"><strong>register</strong></a> instead.
+    <div class="row">
+        <div class="col s12 m6 14">
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <br>
+                <button class="btn" type="submit">login</button>
+            </form>
+            <br>
+            If you don'talready have an account <a href="/register" target="blank"><strong>register</strong></a> instead.
+        </div>
+        <div class="col s12 m6 14">
+            <img src={% static 'imgs/hello.gif' %}>
+        </div>
+    </div>
 
 {% endblock %}

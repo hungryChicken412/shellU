@@ -1,8 +1,11 @@
+{% load static %}
+<link href={% static 'style.css' %} rel="stylesheet">
 <nav>
 <div class="nav-wrapper">
-  <a href="/" class="brand-logo">Tutorials</a>
+  <a href="/" class="brand-logo" style="padding-left: 12px;">Bluefootprint</a>
   <ul id="nav-mobile" class="right hide-on-med-and-down">
     {% include 'main/includes/navbarItems.html' %}
   </ul>
 </div>
 </nav>
+

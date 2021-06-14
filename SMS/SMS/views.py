@@ -8,6 +8,7 @@ from .forms import NewUserForm
 
 
 
+host = "localhost"
 
 def singleSlug(request, single_slug):
 	categories = [c.category_slug for c in CourseCategory.objects.all()]
@@ -47,6 +48,16 @@ def singleSlug(request, single_slug):
 
 
 
+def landing(request):
+	# return HttpResponse('Hello World')
+	user = request.user
+	hello = 'hello world'
+	context = {
+		'user':user,
+		'hello':hello,
+		'categories': CourseCategory.objects.all,
+	}
+	return render(request, 'landing.html', context)
 
 
 def home_view(request):
@@ -72,7 +83,7 @@ def register(request):
 			messages.success(request,  f"New Account Created: {username}")
 			login(request, user)
 			messages.info(request,  f"You are now logged in as {username}")
-			return redirect('http://35048c338b4d.ngrok.io/app/')
+			return redirect(host + '/app/')
 		else:
 			for msg in form.error_messages:
 				messages.error(request, f"{msg}: {form.error_messages[msg]}")
@@ -89,7 +100,7 @@ def register(request):
 def logout_request(request):
 	logout(request)
 	messages.info(request, f"Logged Out Successfully!")
-	return redirect('http://35048c338b4d.ngrok.io/app/')
+	return redirect(host + '/app/')
 
 def login_request(request):
 	if request.method == "POST":
@@ -101,7 +112,7 @@ def login_request(request):
 			if (user is not None):
 				login(request, user)
 				messages.info(request,  f"You are now logged in as {username}")
-				return redirect('http://35048c338b4d.ngrok.io/app/')
+				return redirect(host + '/app/')
 		else:
 			for msg in form.error_messages:
 				messages.error(request, f"{msg}: {form.error_messages[msg]}")
