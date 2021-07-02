@@ -1,1 +1,12 @@
-<p>hello</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 px-1 bg-dark position-fixed sidenav" id="sticky-sidebar">
+            <a class="btn navbarBtn active" routerLink="/">Home</a>
+            <a class="btn navbarBtn" routerLink="/playground">Playground</a>
+        </div>
+        <div class="col offset-3 backdark" id="main">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+

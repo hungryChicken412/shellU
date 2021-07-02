@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Difficulty
-from .serializers import DifficultySerializer
+from .models import Difficulty, Puzzle
+from .serializers import DifficultySerializer, PuzzleSerializer
 from rest_framework import routers, serializers, viewsets
 
 # Create your views here.
@@ -8,3 +8,7 @@ from rest_framework import routers, serializers, viewsets
 class DiffViewSet(viewsets.ModelViewSet):
     queryset = Difficulty.objects.all()
     serializer_class = DifficultySerializer
+
+class PuzzViewSet(viewsets.ModelViewSet):
+    queryset = Puzzle.objects.all()
+    serializer_class = PuzzleSerializer

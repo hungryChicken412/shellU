@@ -18,8 +18,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static  import static
 from .views import home_view, register, logout_request, login_request, singleSlug, landing
-from main.models import Difficulty
-from main.views import DiffViewSet
+from main.models import Difficulty, Puzzle
+from main.views import DiffViewSet, PuzzViewSet
 from rest_framework import routers, serializers, viewsets
 
 
@@ -27,6 +27,7 @@ from rest_framework import routers, serializers, viewsets
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'category', DiffViewSet)
+router.register(r'puzzles', PuzzViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
