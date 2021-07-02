@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'profiles',
     'tinymce',
+    'rest_framework',
     'django.contrib.sessions',
     'django.contrib.messages',
     'main.apps.MainConfig',
