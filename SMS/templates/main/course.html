@@ -12,10 +12,12 @@
                 <p style="font-size:70%">Published {{course.published}}</p>
                 {{course.content }}
 
-                <form method="POST">
-                    <textarea id="code" class="materialize-textarea"></textarea>
-                    <br>
+                <form asction="#" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <textarea id="code" class="materialize-textarea" name="solutionCode"></textarea>
                     <button class="btn" type="submit">Submit</button>
+
                 </form>
             </div>
 

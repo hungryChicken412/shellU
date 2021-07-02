@@ -25,8 +25,8 @@ class Puzzle(models.Model):
 	content = models.TextField()
 	published = models.DateTimeField("date published", default=datetime.now())
 	puzzle_slug = models.CharField(max_length=200, default=1)
-
 	puzzle_category = models.ForeignKey(Difficulty, default=1, verbose_name="Difficulty", on_delete=models.CASCADE)
+	answer = models.CharField(max_length=200, default=0)
 
 
 	
@@ -38,6 +38,9 @@ class Puzzle(models.Model):
 class PuzzleSolution(models.Model):
 	puzzle = models.OneToOneField(Puzzle, on_delete=models.CASCADE)
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	published = models.DateTimeField("date published", default=datetime.now())
-	content = models.TextField()
+	created = models.DateTimeField(auto_now_add = True)
+	content = models.TextField(null=True)
+
+	def __str__(self):
+		return f"{self.user.username}--{self.puzzle.title}"
 

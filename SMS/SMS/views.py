@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from main.models import Puzzle,Difficulty
+from main.models import Puzzle,Difficulty,PuzzleSolution
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .forms import NewUserForm, SubmitAnswerForm
+from .forms import NewUserForm
+from .api.Tio import Tio
 
 
 
@@ -12,20 +13,28 @@ host = ""
 
 
 def singleSlug(request, single_slug):
+	site = Tio()
 
-	if request.method == "POST":
-		form = SubmitAnswerForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			username = form.cleaned_data.get('username')
-			messages.success(request,  f"New Account Created: {username}")
-			login(request, user)
-			messages.info(request,  f"You are now logged in as {username}")
-			return redirect(host + '/app/')
-		else:
-			for msg in form.error_messages:
-				messages.error(request, f"{msg}: {form.error_messages[msg]}")
-	
+	if (request.method == "POST"):
+		try:
+			solve = request.POST.get("solutionCode")
+			puzzleInstance = Puzzle.objects.get(puzzle_slug=single_slug)
+			print(solve)
+			tioReq = site.new_request('python3', solve)
+			tioResponce = site.send(tioReq).split("\n")[0]
+
+			if (tioResponce == puzzleInstance.answer):
+				messages.success(request,  tioResponce)
+				solution = PuzzleSolution(user=request.user, puzzle=puzzleInstance, content=solve)
+				solution.save()
+			else:
+				messages.success(request,  "WRONG!")
+		except:
+			messages.success(request,  "Something Went Wrong!")
+		
+
+
+
 
 	categories = [c.category_slug for c in Difficulty.objects.all()]
 	if (single_slug in categories):
@@ -52,6 +61,7 @@ def singleSlug(request, single_slug):
 
 		context = {
 			"course" : this_course,
+
 
 		}
 		return render(request, "main/course.html", context)
