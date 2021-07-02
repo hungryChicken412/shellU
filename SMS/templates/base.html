@@ -35,8 +35,15 @@
     <div class="container">
       <br>
 
+      {% if user.is_authenticated %}
+
       {% block content %}
       {% endblock content %}
+
+      {% else %}
+        <h1>USER NOT LOGGED IN!</h1>
+        <p class="flow-text"> please <a href="/login">log in</a> to continue, or <a href="/register">register</a> </p>
+      {% endif %}
     </div>
 
     

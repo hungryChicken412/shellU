@@ -8,7 +8,15 @@ from .forms import NewUserForm
 
 
 
-host = "localhost"
+host = ""
+
+
+
+def cardifyCourse(content):
+	carded = content.split("[END_CARD]")
+	carded = list(carded)
+	return carded
+
 
 def singleSlug(request, single_slug):
 	categories = [c.category_slug for c in CourseCategory.objects.all()]
@@ -36,8 +44,12 @@ def singleSlug(request, single_slug):
 		tutorials_from_series = Course.objects.filter(course_series__course_series=this_course.course_series).order_by('published')
 		this_tutorial_idx = list(tutorials_from_series).index(this_course)
         
+
+		carded = cardifyCourse(this_course.content)
+		print(carded)
 		context = {
 			"course" : this_course,
+			"cardedContent" : carded,
 			"sidebar": tutorials_from_series,
 			"this_tut_idx": this_tutorial_idx,
 
@@ -94,7 +106,13 @@ def register(request):
 	context = {
 		'form': form,
 	}
-	return render(request, 'main/register.html', context )
+
+        
+	if request.user.is_authenticated:
+		return redirect(host + '/app/')
+	else:
+		return render(request, 'main/register.html', context )
+	
 
 
 def logout_request(request):
@@ -103,6 +121,7 @@ def logout_request(request):
 	return redirect(host + '/app/')
 
 def login_request(request):
+        
 	if request.method == "POST":
 		form = AuthenticationForm(request, data=request.POST)
 		if form.is_valid():
@@ -123,4 +142,9 @@ def login_request(request):
 	context = {
 		"form": form,
 	}
-	return render(request, "main/login.html", context)
+	if request.user.is_authenticated:
+		return redirect(host + '/app/')
+	else:
+		return render(request, "main/login.html", context)
+
+	

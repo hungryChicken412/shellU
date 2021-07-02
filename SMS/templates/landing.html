@@ -42,7 +42,6 @@
       <div class="hero-text">
         <h1><img src={% static "imgs/icon.png" %}></h1>
         <h2>Kick Start Your Career!</h2>
-        <p class="flow-text typing-demo">Don't know where to start? don't worry! We got you!</p>
         <p class="flow-text">Start learning in a simple click! FOR FREE!</p>
         <a class="waves-effect waves-light btn" href="login/">Get Started!</a>
       </div>
@@ -56,6 +55,38 @@
     <br>
     <br>
     <br>
+
+    
+    <div class="section white">
+      <div class="row container">
+        <h1 style="text-align: center;">  <underline data-tooltip="or roadmaps">Courses</underline></h1>
+        <blockquote>
+        New <underline data-tooltip="or roadmaps">courses</underline> are still being added!
+        </blockquote>
+        <p class="flow-text">Starting is as simple as clicking a button (literally) just select a category that you want to learn, and get started.</p>
+
+        <div class="row" style="background-color: #25a5981e;">
+        {% for cat in categories %}
+            <div class="col s12 m6 l4">
+                <a href="app/{{cat.category_slug}}", style="color:#000">
+                    <div class="card hoverable">
+                        <div class="card-content">
+                            <div class="card-title" style="font-weight: bold;">{{cat.course_category}}</div>
+                            <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
+                            <p>{{cat.category_summary}}</p>
+                            <br>
+                            <a class="waves-effect waves-light btn" href="app/{{cat.category_slug}}">Start Learning</a>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    </div>
+
+    </div>
 
 
     <div class ="section">
@@ -185,37 +216,6 @@
     <br>
     <br>
     <br>
-
-    <div class="section white">
-      <div class="row container">
-        <h1 style="text-align: center;">  <underline data-tooltip="or roadmaps">Courses</underline></h1>
-        <blockquote>
-        New <underline data-tooltip="or roadmaps">courses</underline> are still being added!
-        </blockquote>
-        <p class="flow-text">Starting is as simple as clicking a button (literally) just select a category that you wan't to learn, and get started.</p>
-
-        <div class="row" style="background-color: #25a5981e;">
-        {% for cat in categories %}
-            <div class="col s12 m6 l4">
-                <a href="app/{{cat.category_slug}}", style="color:#000">
-                    <div class="card hoverable">
-                        <div class="card-content">
-                            <div class="card-title" style="font-weight: bold;">{{cat.course_category}}</div>
-                            <!--<p style="font-size:70%">Published {{tut.tutorial_published}}</p>-->
-                            <p>{{cat.category_summary}}</p>
-                            <br>
-                            <a class="waves-effect waves-light btn" href="app/{{cat.category_slug}}">Start Learning</a>
-
-                        </div>
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
-    </div>
-
-    </div>
-
-    </div>
 
     <br>
     <br>
