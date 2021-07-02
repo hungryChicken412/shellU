@@ -2,71 +2,26 @@
 
 {% block content %}
 
+
     <div class="row">
 
         <div class="col s12, m8, l8">
-            
-            <h3>{{course.title}}</h3>
-            <p style="font-size:70%">Published {{course.published}}</p>
-            <ul class="collapsible popout"> 
-            {% for card in cardedContent %}
-            {% if forloop.counter0 == 0 %}
-
-
-
-            
-                <li class="active flashcard">
-                    <div class="collapsible-header" style="font-weight: bold; font-size: large;">Level-{{forloop.counter}}</div>
-                    <div class="collapsible-body">
-                        <p>LEVEL- {{forloop.counter}}/{{cardedContent|length}}</p>
-                        <p class="flow-text">{{card|safe}}</p>
-                        <button class="btn" onclick="changeCard({{forloop.counter}})">Next</button>
-                    </div>
-                </li>
-            {% else %}
-                <li id="card{{forloop.counter}}" class="flashcard">
-                    <div class="collapsible-header" style="font-weight: bold; font-size: large;">Level-{{forloop.counter}}</div>
-                    <div class="collapsible-body">
-                        <p>LEVEL- {{forloop.counter}}/{{cardedContent|length}}</p>
-                        <p class="flow-text">{{card|safe}}</p>
-                        <button class="btn" onclick="changeCard({{forloop.counter}});">Next</button>
-                        
-                    </div>
-                </li>
-            {% endif %}
-
-            {% endfor %}
-            <li class="active flashcard">
-                <div class="collapsible-header" style="font-weight: bold; font-size: large;">End</div>
-                <div class="collapsible-body">
-                    <p class="flow-text">The End</p>
-                    <a href="/app/" class="btn">Back To Home!</a>
-                </div>
-            </li>
-            </ul>
-        </div>
-
-        <div class="col s12 m4 l4">
-            <ul class="collapsible popout">
-                <div class="collapsible-header">Other Courses In Same Subject</div>
+            <div class="container-fluid" style="height: auto !important;" align="left">
                 
-                {% for course in sidebar %}
-                    {% if forloop.counter0 == this_tut_idx %}
-                        <li class="active">
-                            <div class="collapsible-header" style="font-weight: bold;">{{course.title}}<br>(currently viewing)</div>
-                        </li>
-                    {% else %}
-                        <li>
-                            <div class="collapsible-header">{{course.title}}</div>
-                            <div class="collapsible-body">
-                                <p><a href="{{course.course_slug}}"><button class="btn waves-effect waves-light right-align" style="background-color:yellow; color:black">Go</button></a></p>
+                <h3>{{course.title}}</h3>
+                <p style="font-size:70%">Published {{course.published}}</p>
+                {{course.content }}
 
-                            </div>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
+                <form method="POST">
+                    <textarea id="code" class="materialize-textarea"></textarea>
+                    <br>
+                    <button class="btn" type="submit">Submit</button>
+                </form>
+            </div>
+
+
         </div>
+
 
     </div>
 

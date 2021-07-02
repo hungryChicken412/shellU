@@ -3,14 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-
-
-
-
-
-
-
-
 class NewUserForm(UserCreationForm):
 	email = forms.EmailField(required=True)
 
@@ -25,3 +17,9 @@ class NewUserForm(UserCreationForm):
 			user.save()
 
 		return user
+
+
+
+class SubmitAnswerForm(forms.Form):
+	user = 
+	answer = forms.Textarea()

@@ -1,32 +1,39 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from main.models import Course,CourseCategory, CourseSeries
+from main.models import Puzzle,Difficulty
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .forms import NewUserForm
+from .forms import NewUserForm, SubmitAnswerForm
 
 
 
 host = ""
 
 
-
-def cardifyCourse(content):
-	carded = content.split("[END_CARD]")
-	carded = list(carded)
-	return carded
-
-
 def singleSlug(request, single_slug):
-	categories = [c.category_slug for c in CourseCategory.objects.all()]
-	if (single_slug in categories):
-		matching_series = CourseSeries.objects.filter(course_category__category_slug=single_slug)
 
+	if request.method == "POST":
+		form = SubmitAnswerForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			username = form.cleaned_data.get('username')
+			messages.success(request,  f"New Account Created: {username}")
+			login(request, user)
+			messages.info(request,  f"You are now logged in as {username}")
+			return redirect(host + '/app/')
+		else:
+			for msg in form.error_messages:
+				messages.error(request, f"{msg}: {form.error_messages[msg]}")
+	
+
+	categories = [c.category_slug for c in Difficulty.objects.all()]
+	if (single_slug in categories):
+		matching_puzzles = Puzzle.objects.filter(puzzle_category__category_slug=single_slug)
 		series_url = {}
-		for m in matching_series.all():
-			part_one = Course.objects.filter(course_series__course_series=m.course_series).earliest('published')
-			series_url[m] = part_one.course_slug
+
+		for m in matching_puzzles.all():
+			series_url[m] = m.puzzle_slug
 
 		
 
@@ -36,22 +43,15 @@ def singleSlug(request, single_slug):
 		}
 		return render(request, "main/category.html", context)
 	
-	course = [c.course_slug for c in Course.objects.all()]
+	course = [c.puzzle_slug for c in Puzzle.objects.all()]
 
 	if (single_slug in course):
 
-		this_course = Course.objects.get(course_slug=single_slug)
-		tutorials_from_series = Course.objects.filter(course_series__course_series=this_course.course_series).order_by('published')
-		this_tutorial_idx = list(tutorials_from_series).index(this_course)
+		this_course = Puzzle.objects.get(puzzle_slug=single_slug)
         
 
-		carded = cardifyCourse(this_course.content)
-		print(carded)
 		context = {
 			"course" : this_course,
-			"cardedContent" : carded,
-			"sidebar": tutorials_from_series,
-			"this_tut_idx": this_tutorial_idx,
 
 		}
 		return render(request, "main/course.html", context)
@@ -67,7 +67,7 @@ def landing(request):
 	context = {
 		'user':user,
 		'hello':hello,
-		'categories': CourseCategory.objects.all,
+		'categories': Difficulty.objects.all,
 	}
 	return render(request, 'landing.html', context)
 
@@ -79,7 +79,7 @@ def home_view(request):
 	context = {
 		'user':user,
 		'hello':hello,
-		'categories': CourseCategory.objects.all,
+		'categories': Difficulty.objects.all,
 	}
 	return render(request, 'main/categories.html', context)
 
