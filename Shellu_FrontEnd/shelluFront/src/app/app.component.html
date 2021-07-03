@@ -1,15 +1,28 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 px-1 bg-dark position-fixed sidenav" id="sticky-sidebar">
+        <div class="col-3 px-1 bg-dark position-fixed sidenav" id="sticky-sidebar" style="overflow-y: auto;overflow-x: auto">
+            <div class="navbar-brand" href="#">
+                <img src="../assets/icons/shellUheader.svg" width="200" height="80" alt="">
+            </div>
             <a class="btn navbarBtn active" routerLink="/">Home</a>
-            <a class="btn navbarBtn" routerLink="/playground">Playground</a>
+            <a class="btn navbarBtn" routerLink="/challenges">Challenges</a>
             <a class="btn navbarBtn" routerLink="#">Settings</a>
             <a class="btn navbarBtn" routerLink="#">Info</a>
             <a class="btn navbarBtn" routerLink="#">Credits</a>
+
+            <hr>
+            <div class="sidenavFooter">
+                <img src="../assets/icons/shellUicon.svg" width="200" height="80" alt="">
+                <p class="text-muted">Following is a work in progress, if you have any queries of advice, kindly reach me out on, contact@vavecorp.com</p>
+                <p class="text-muted">Made-by: Vavecorp</p>
+            </div>
         </div>
+
         <div class="col offset-3 backdark" id="main">
             <router-outlet></router-outlet>
         </div>
+
+
     </div>
 </div>
 

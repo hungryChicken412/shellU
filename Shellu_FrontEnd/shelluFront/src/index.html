@@ -17,8 +17,33 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
 </head>
-<body class="mat-typography">
+<body class="mat-typography" onload="GFG_Fun()">
   <app-root></app-root>
-</body>
 
+  <footer class="bg-dark info">
+    <h1>support us</h1>
+    <h1>and donate!</h1>
+  </footer>
+
+  <div class="loader-wrapper" id="loader">
+    <span class="loader"><img src="../assets/icons/shellUloader.gif" width="200" height="80" alt=""></span>
+  </div>
+  
+
+  
+
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script>
+  var div = document.getElementById('loader');
+  
+function GFG_Fun() {
+  div.remove();
+  console.log("removed");
+
+}
+</script>
 </html>

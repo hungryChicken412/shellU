@@ -13,6 +13,32 @@ colRed: #743738;
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    width:100vw;
+    height: 100vh;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+  }
+  /* width */
+::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #c0c0c0;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(190, 4, 82);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 13, 114);
+  }
 
 html, body { height: 100%; font-family: 'Josefin Sans', sans-serif;}
 body { 
@@ -24,9 +50,32 @@ body {
 p {color: #dee2d8; font-family: 'Josefin Sans', sans-serif;}
 
 .card{
+    margin: 4px 4px 4px 4px;
+
     justify-content: center;
 
-    border-radius: 0px;
+    border-color: 1e2125;
+    border-width: 0px;
+    border-left-width: 12px;
+    border-right-width: 12px;
+    vertical-align: center;
+
+    background: #1e2125;
+}
+.card2{
+    margin: 4px 4px 4px 4px;
+
+    justify-content: center;
+
+    vertical-align: center;
+
+    background: #232425bd;
+}
+.cardLight{
+    margin: 4px 4px 4px 4px;
+
+    justify-content: center;
+
     vertical-align: center;
 
     background: #1e2125;
@@ -42,7 +91,64 @@ p {color: #dee2d8; font-family: 'Josefin Sans', sans-serif;}
     color: #50aecc;
 }
 
+.goldContainer{
+    background-color: transparent;
+    color:rgb(255, 227, 67);
+    padding-left: 8px;
+
+
+    text-shadow: 0 0 12px black;
+
+    border-radius: 0;
+    border-width: 0;
+    margin-bottom: 12px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: xx-large;
+    transition: text-shadow color 0.1s;
+
+}
+.goldContainer:hover{
+    color:rgb(255, 222, 37);
+    text-shadow: 0 0 20px black;
+}
+
+h1, h2, h3{
+    font-family: 'Josefin Sans', sans-serif;
+}
+.josephine{
+    font-family: 'Josefin Sans', sans-serif;
+
+}
 progress{
     height: 2px;
 }
+.text-right{
+    text-align: right;
+}
+
+.dark{
+    background-color:#191c1f;
+}
+.sidenavFooter{
+    margin-top: 20vh;
+}
+
+.loader-wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #111927;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+.loader {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10%;;
+    position: relative;
+  }
 

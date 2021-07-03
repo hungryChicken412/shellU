@@ -8,12 +8,14 @@ import { HomeComponent } from './home/home.component';
 import { PlaygroundComponent } from './playground/playground.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { PuzzleListComponent } from './puzzle-list/puzzle-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PlaygroundComponent
+    PlaygroundComponent,
+    PuzzleListComponent
   ],
   imports: [
     MatSidenavModule,

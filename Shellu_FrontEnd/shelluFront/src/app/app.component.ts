@@ -10,21 +10,10 @@ import { ApiService } from './api.service';
 
 export class AppComponent {
   title = 'shelluFront';
-  categories = [{puzzle_category:'easy'},{puzzle_category:'hard'}]
+
 
   constructor(private api:ApiService) { 
-    this.getCats();
-   }
 
-   getCats = () => {
-     this.api.getAllCats().subscribe(
-       data => {
-         this.categories = data
-       },
-       error => {
-         console.log(error)
-       }
-     )
    }
 
    

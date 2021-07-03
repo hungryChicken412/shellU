@@ -13,6 +13,6 @@ export class ApiService {
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   getAllCats(): Observable<any>{
-    return this.http.get(this.baseUrl + '/category/', {headers: this.httpHeaders})
+    return this.http.get(this.baseUrl + '/puzzles/', {headers: this.httpHeaders})
   }
 }
