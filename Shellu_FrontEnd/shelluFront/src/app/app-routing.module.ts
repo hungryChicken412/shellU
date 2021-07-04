@@ -1,13 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 import { PlaygroundComponent } from './playground/playground.component';
 import { PuzzleListComponent } from './puzzle-list/puzzle-list.component';
 
 const routes: Routes = [
+
+
   { path:'', component: HomeComponent },
-  { path:'playground', component: PlaygroundComponent },
-  { path: 'challenges', component:PuzzleListComponent}
+  { path:'playground', component: PlaygroundComponent,
+    children: [
+      { path: ':name', component:PlaygroundComponent }
+    ]},
+    
+  { path: 'challenges', component:PuzzleListComponent,
+    children: [
+      { path:':name', redirectTo: '/playground/:name'},
+    ]},
+
 
 ];
 

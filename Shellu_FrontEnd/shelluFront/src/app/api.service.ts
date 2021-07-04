@@ -12,7 +12,11 @@ export class ApiService {
   baseUrl = "http://localhost:8000"
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
-  getAllCats(): Observable<any>{
+  getAllPuzzles(): Observable<any>{
     return this.http.get(this.baseUrl + '/puzzles/', {headers: this.httpHeaders})
+  }
+
+  getSinglePuzzle(puzzle: string){
+    return this.http.get(this.baseUrl + '/puzzles/'+puzzle, {headers: this.httpHeaders})
   }
 }

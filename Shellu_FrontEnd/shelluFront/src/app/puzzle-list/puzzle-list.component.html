@@ -24,9 +24,6 @@
     <br>
 
     <h2>Simply Pick Your Challenge And Head To The PLAYGROUND!</h2>
-    <ul>
-        <li ngFor="let puzzle in "
-    </ul>
 
     <table class="table table-striped table-dark">
 
@@ -41,53 +38,11 @@
         </thead>
 
         <tbody>
-          <tr>
+          <tr *ngFor="let puzzle of puzzles">
             <th scope="row">1</th>
-            <td><a href="/playground/into" class="medium">Into The Maths</a></td>
+            <td><a href="challenges/{{puzzle.puzzle_slug}}" class="{{puzzle.puzzle_category}}">{{puzzle.title}}</a></td>
             <td>12+</td>
-            <td>Medium</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td><a href="/playground/into" class="hard">Red Dungeon</a></td>
-            <td>20+</td>
-            <td>Hard</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td><a href="/playground/into" class="easy">Risks</a></td>
-            <td>20+</td>
-            <td>Easy</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td><a href="/playground/into" class="easy">Risks</a></td>
-            <td>20+</td>
-            <td>Easy</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td><a href="/playground/into" class="easy">Risks</a></td>
-            <td>20+</td>
-            <td>Easy</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td><a href="/playground/into" class="easy">Risks</a></td>
-            <td>20+</td>
-            <td>Easy</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td><a href="/playground/into" class="hard">Red Dungeon</a></td>
-            <td>20+</td>
-            <td>Hard</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td><a href="/playground/into" class="hard">Red Dungeon</a></td>
-            <td>20+</td>
-            <td>Hard</td>
+            <td>{{puzzle.puzzle_category}}</td>
           </tr>
           
           

@@ -10,4 +10,4 @@ class DifficultySerializer(serializers.HyperlinkedModelSerializer):
 class PuzzleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Puzzle
-        fields = ['title']
+        fields = ['title', 'puzzle_category', 'puzzle_slug', 'content','answer']
