@@ -1,0 +1,61 @@
+.code{
+    background-color: rgb(32, 32, 32);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.editor{
+    background-color: #242628;
+    background-size: 100% 4rem;
+
+    font-size: small;
+    border-radius: 0;
+    border-color: transparent;
+    font-size: large;
+    color: rgb(255, 255, 255);
+    font-family: 'Courier New', Courier, monospace;
+
+
+
+
+    width: 100%;
+    height: 400px;
+    line-height: 2rem;
+    margin: 0 auto;
+    padding: 4px 8px;
+    
+}
+
+
+
+.nav-tabs{
+    border: none;
+    color: white;
+    background-color: rgb(32, 32, 32);
+    
+
+}
+.nav-link{
+    color: gray;
+    border-radius: 0;
+    height: 100%;
+}
+.nav-tabs .active{
+    background-color: #242628;
+    border: none;
+    color: white;
+    
+}
+
+
+.context{
+    border-width: 20px;
+}
+
+
+
+.form-select{
+    background-color: #242628;
+    color: white;
+    border:none;
+}

@@ -1,3 +1,46 @@
 .form-select{
     background-color: red;;
 }
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  #activity-table {
+    height: 200px;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  #activity-table td {
+    background-image: linear-gradient(
+      45deg,
+      #956fd3,
+      #e76ec2,
+      #ff7fa2,
+      #ffa782,
+      #ffd86f,
+      #faf982
+    );
+    background-size: 600%;
+    animation: gradient-animation 3s linear infinite alternate;
+  }
+  @keyframes gradient-animation {
+    0%   { background-position:   0%; }
+    100% { background-position: 100%; }
+  }
+  .border-left{
+    border-width: 1px;
+    border-color: transparent;
+    border-left-color: #ff0000;
+}
+
+.terminal{
+    margin-right: 40px;
+}
+

@@ -51,16 +51,13 @@ p {color: #dee2d8; font-family: 'Josefin Sans', sans-serif;}
 
 .card{
     margin: 4px 4px 4px 4px;
+    border-radius: 0;
+    border-width: 0;
 
-    justify-content: center;
+    padding: 20px;
 
-    border-color: 1e2125;
-    border-width: 0px;
-    border-left-width: 12px;
-    border-right-width: 12px;
     vertical-align: center;
 
-    background: #1e2125;
 }
 .card2{
     margin: 4px 4px 4px 4px;
@@ -119,8 +116,8 @@ h1, h2, h3{
     font-family: 'Josefin Sans', sans-serif;
 
 }
-progress{
-    height: 2px;
+.bar{
+    height: 4px;
 }
 .text-right{
     text-align: right;
@@ -130,25 +127,61 @@ progress{
     background-color:#191c1f;
 }
 .sidenavFooter{
-    margin-top: 20vh;
+    position: absolute;
+    bottom: 0;
 }
 
 .loader-wrapper {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #111927;
     display:flex;
+    position:fixed;
+    width: 100%;
+    height:100%;
+    z-index: 9999;
+    background-color: #111927;
     justify-content: center;
     align-items: center;
   }
 .loader {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    margin-right: 10%;;
-    position: relative;
+
   }
 
+
+
+  .content{
+      margin-left: 12px;
+      margin-right: 12px;
+  }
+
+  .text-pink{
+      color: #ff0a5c;
+  }
+
+
+
+
+  .cardHeading{
+      padding: 5px;
+      top:-10px;
+      left:-10px;
+      position:absolute;
+      background-color: #1a1e21;
+  }
+
+  .bg-black{
+      background-color: black;
+  }
+
+  .text-red{
+      color: rgb(167, 0, 0);
+  }
+  .text-green{
+      color: rgb(57, 153, 2);
+  }
+
+  .terminalFont{
+      font-family: 'Courier New', Courier, monospace !important;
+  }
+
+
+
+  

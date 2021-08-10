@@ -34,18 +34,50 @@
                 </div>
             </div>
 
-            <div class="col-lg-5 card2">
-                <div class="card-body">
-                    <h1 class="card-title">
-                        Your Output
-                    </h1>
-                    <hr>
-                    <p>*****<br>*****<br>*****<br>*****<br>*****<br></p>
-                    <hr>
+            <div class="col-lg-5 card2 px-0">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Output</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Hint(s)</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Solution</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="card-body context">
+                            <h1 class="card-title">
+                                Your Output
+                            </h1>
+                            <hr>
+                            <div class="code">
+                                <p>*****<br>*****<br>*****<br>*****<br>*****<br></p>
+                            </div>
+                            <hr>
+            
+                            <p>Python 3, on TIO</p>
+                        </div>
 
-                    <p>Python 3, on TIO</p>
-                    
-                </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="card-body context">
+                            <p>
+                                Hint#1 :- Kar na
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="card-body context">
+                            <div class="code">
+                                print("Hello");
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
             </div>
     
         </div>
@@ -55,16 +87,26 @@
     <br>
     <br>
     <h2>Start Coding!</h2>
-    <form action="#">
-        <select class="form-select">
-            <option value="1">Python3</option>
-          </select>
-          <br>
-        <textarea type="text"></textarea>
-        <br>
-        <button class="btn btn-success">SUBMIT</button>
-    </form>
-    <p></p>
+    <div class="row">
+        <div class="col-md-9">
+            <form action="#">
+                <p> I'm sorry but at this moment, only 'Python 3' is supported!</p>
+                <select class="form-select">
+                    <option class="form-select" value="1">Python3</option>
+                  </select>
+                  <br>
+                <textarea spellcheck="false" class="code editor" wrap="off" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" id="codeEditor" rows="10" cols="40"></textarea>
+                <br>
+                <button class="btn btn-success">RUN</button>
+            </form>
+        </div>
+
+        <div class="col-md-3">
+            
+        </div>
+    </div>
+
+    
     <br>
     <br>
 

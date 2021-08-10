@@ -1,0 +1,46 @@
+It's an efficient algorithm for general-purpose
+The key operation of the Merge Sort algorithm is the merging of two "Sorted Sequences" in the "Combine" Step.
+it's WCT is - O(nlgn)
+
+
+----------------------------
+pseudocode
+----------------------------
+
+if p < r:
+	q = [(p + r)/2]
+	MergeSort(A, p, q)
+	MergeSort(A, q + 1, r)
+	Merge(A, p, q, r)
+
+---------------------------
+MergeSort(A, p, q, r):
+--
+n1 = q - p + 1
+n2 = r - q
+
+L = []
+R = []
+
+for i = 1 to n1:
+	L[i] = A[p + i - 1]
+for j = 1 to n2:
+	K[j] = A[q + j]
+
+L[n1 + 1] = infinity
+R[n2 + 1] = infinity
+
+i = 1
+j = 1
+
+for k == p to r:
+	if L[i] <= R[j]:
+		A[k] = L[i]
+		i = i + 1
+	else
+		A[k] = R[j]
+		j = j + 1
+
+-----------------------------
+
+

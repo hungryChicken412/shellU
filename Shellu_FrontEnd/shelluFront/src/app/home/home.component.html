@@ -1,128 +1,136 @@
-
-
-<br>
 <h1>Dashboard</h1>
-<div class="container" >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+
+<div class="content">
     <div class="row">
-        <div class="col-lg-5">
-            <div class="card-body">
-                
-                <h1 class="card-title">
-                    <span class="material-icons">
-                        leaderboard
-                    </span>
-                    Leaderboard!
-                </h1>
-                <table class="table table-striped table-dark">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">User</th>
-                        <th scope="col">XP</th>
-
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <th scope="row">127</th>
-                            <td>...</td>
-                            <td>...</td>
-                          </tr>
-                      <tr>
-                        <th scope="row">128</th>
-                        <td>Mark</td>
-                        <td>1200</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">129</th>
-                        <td>...</td>
-                        <td>...</td>
-                      </tr>
-                    </tbody>
-
-                  </table>
-                  
-                <p class="card-text">Your Position On The Leaderboard</p>
-                <button class="btn btn-info">View Leaderboard</button>
-
-            </div>
-        </div>
-        <div class="col-lg-6 card">
+        <div class="col-sm-6 mx-2 card bg-dark">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="material-icons cardIcon">
-                        perm_identity
-                    </div>
+                <div class="col-sm-4">
+                    <img src="../../assets/icons/userIcon.png" alt="user icon" class="img-fluid">
                 </div>
-                <div class="col-md-8">
-                <div class="card-body">
-                    <h2 class="card-title info">Mark!</h2>
-                    <p class="card-text">User information what he likes stuff like that!</p>
-                    <p class="info">XP</p>
-                    <div class="progress" style="height: 4px;">
+                <div class="col-sm-8">
+                    <h1 class="text-pink my-0">Mark#123</h1>
+                    <p class="info"> User info stuff what he likes and stuff that he doesn't like and some extra stuff to fill up the in lines. .</p>
+                    <div class="progress bar">
                         <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <p>1200</p>
-                    
-                    <p class="card-text"><small class="text-muted">Last Logged</small></p>
-                    <button class="btn btn-danger">Log Out!</button>
+                    <p>400XP</p>
                 </div>
+
+            </div>
+        </div>
+        <div class="col-sm-5 mx-2 card bg-dark">
+            <div class="cardHeading">
+                <h1 class="my-0">Activity</h1>
+            </div>
+            <div class="row my-4">
+                <div class="col-sm-6">
+                    <p class="info">Today</p>
+                    <p class="info">This Week</p>
+                    <p class="info">This Month</p>
+                </div>
+                <div class="col-sm-6 text-end" >
+                    <p class="text-pink">12+</p>
+                    <p class="text-pink">12+</p>
+                    <p class="text-pink">12+</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <br>
-    <br>
-    <h2>Overview</h2>
-    <div class="card">
-        <!-- Card header -->
-        <!-- Card body -->
-        <div class="card-body">
-            <div class="chart">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <p class="info">XP</p>
-                        <p class="info">Lowest Bits</p>
-                        <p class="info">Age</p>
-                        <p class="info">Rank</p>
-                    </div>
-                    <div class="col-sm-6" >
-                        <div class="progress" style="height: 4px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        <p>1200</p>
-                        <p>48 B</p>
-                        <p>12 Days</p>
-                        <p>Baby</p>
-                    </div>
+    <div class="row my-4">
+        <div class="col-sm-5 mx-2 card bg-dark">
+            <div class="cardHeading">
+                <h1 class="my-0">Stats</h1>
+            </div>
+            <div class="row my-4">
+                <div class="col-sm-6">
+                    <p class="info">XP</p>
+                    <p class="info">Level</p>
+                    <p class="info">Global Rank</p>
+                    <p class="info">Language(s)</p>
+                </div>
+                <div class="col-sm-6 text-end" >
+                    <p class="text-pink">400</p>
+                    <p class="text-pink">Sleepy Baby</p>
+                    <p class="text-pink">15210</p>
+                    <p class="text-pink">C#, C, C++, Python, PHP </p>
                 </div>
             </div>
         </div>
-    </div>
-    <br>
-    <br>
 
-    <div class="card goldContainer">
-        Puzzle Of The Day!
+        <div class="col-sm-6 mx-2 card bg-dark">
+            <div class="cardHeading">
+                <h1 class="my-0">Course</h1>
+            </div>
+            <div class="row my-4" style="width: 100%;">
+                <div class="col-sm-6">
+                    <p class="info">Progress</p>
+                    <p class="info">Course</p>
+                    <p class="info">Courses Left</p>
+                    <p class="info">Puzzles Completed</p>
+                </div>
+                <div class="col-sm-6 text-end" >
+                    <div class="progress bar">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <br>
+                    <div class="progress bar">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <br>
+                    <p class="text-pink">15</p>
+                    <p class="text-pink">120</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="card">
-        <!-- Card header -->
-        <!-- Card body -->
-        <div class="card-body">
-            <h2>print a 10 by 5 grid of asterisks!</h2>
-            <p>Desired Output:</p>
-            <p class="info">*********<br>*********<br>*********<br>*********<br>*********<br></p>
-            <p>Print a 10 by 5 grid of asterisks(*) in lowest bits.</p>
-            <button class="btn btn-info">Solve!!</button>
+    <div class="row bg-black py-5 my-4 terminal" style="width: 100vp;">
+        <div class="col-sm-3">
+            <img src="../../assets/icons/earthRotate.gif" class="img-fluid">
+        </div>
+        <div class="col-sm-9">
+            <h2 class="text-red terminalFont">tracy@shellu:-$  <span class="text-green terminalFont">userInfo -m Social -U mark</span></h2>
+            <p class="text-green terminalFont">The information found on the internet</p>
+            <ul style="list-style-type:none;">
+                <li>
+                    <a href="#" class="text-green terminalFont">Facebook</a>
+                </li>
+                <li>
+                    <a href="#" class="text-green terminalFont">Instagram</a>
+                </li>
+                <li>
+                    <a href="#" class="text-green terminalFont">More information</a>
+                </li>
+            </ul>
+
+            
+            
+            
+            
+            
         </div>
     </div>
-
-    
-    <br>
-    <br>
-    <br>
-        
 </div>
+
+<!--
+
+                    <div class="col-sm-1">
+                    <table id="activity-table" class="charts-css column show-labels hide-data data-spacing-5 show-primary-axis" style="height:150px;">
+                        <tbody>
+                            <tr>
+                            <td style="--size:0.1;"><span class="data"> 20 </span></td>
+                            </tr>
+                            <tr>
+                            <td style="--size:0.4;"><span class="data"> 20 </span></td>
+                            </tr>
+                            <tr>
+                            <td style="--size:0.04;"><span class="data"> 20 </span></td>
+                            </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+-->
