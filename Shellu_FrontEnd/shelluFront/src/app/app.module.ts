@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { PuzzleListComponent } from './puzzle-list/puzzle-list.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { NotfoundComponent } from './notfound/notfound.component';
     HomeComponent,
     PlaygroundComponent,
     PuzzleListComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    LoginComponent
   ],
   imports: [
     MatSidenavModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
   ],
   providers: [],

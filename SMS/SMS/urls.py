@@ -41,7 +41,7 @@ router.register(r'puzzles', PuzzViewSet)
 
 app_name = "app"
 urlpatterns = [
-    path('api', include(router.urls)),
+    path('api/', include(router.urls)),
     path('auth/', csrf_exempt(ObtainAuthToken.as_view())), #path('auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('app/', home_view, name="Home-View"),

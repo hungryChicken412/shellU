@@ -30,7 +30,7 @@
                     <h2>{{q.title}}</h2>
                     <p>Desired Output:</p>
                     <p class="info card2">{{q.answer}}</p>
-                    <p>{{q.content}}</p>
+                    <div [innerHTML]="q.content"></div>
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,13 @@ export class AppComponent {
   title = 'shelluFront';
 
 
-  constructor(private api:ApiService) { 
+  constructor(private api:ApiService, private router: Router) { 
 
+   }
+
+   logOut(){
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
    }
 
    

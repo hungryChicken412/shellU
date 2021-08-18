@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { PlaygroundComponent } from './playground/playground.component';
 import { PuzzleListComponent } from './puzzle-list/puzzle-list.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
     children: [
       { path:':name', redirectTo: '/playground/:name'},
     ]},
+  { path:'login', component: LoginComponent },
 
 
 ];

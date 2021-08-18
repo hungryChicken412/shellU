@@ -178,6 +178,16 @@ h1, h2, h3{
       color: rgb(57, 153, 2);
   }
 
+
+  .link{
+      text-decoration: none;
+      color: rgb(255, 13, 114);
+  }
+  .link:hover{
+    text-decoration: none;
+    color: rgb(121, 5, 53);
+  }
+
   .terminalFont{
       font-family: 'Courier New', Courier, monospace !important;
   }

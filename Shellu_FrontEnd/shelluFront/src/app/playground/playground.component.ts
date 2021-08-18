@@ -11,7 +11,13 @@ import {switchMap} from 'rxjs/operators';
 })
 export class PlaygroundComponent implements OnInit {
   
-  q: any;
+  q = {
+    "title": "",
+    "puzzle_category": "",
+    "puzzle_slug": "",
+    "content": "",
+    "answer": ""
+  };
 
   constructor(private api:ApiService, private router:Router) {
 
@@ -20,11 +26,10 @@ export class PlaygroundComponent implements OnInit {
    getPuzzle(name: string){
     this.api.getSinglePuzzle(name).subscribe(
       data => {
-        const puzzle = data;
-        this.q = puzzle;
+        this.q = data;
       },
       error => {
-        console.log(error)
+        console.log(error);
       }
     )
   }
@@ -35,7 +40,7 @@ export class PlaygroundComponent implements OnInit {
     const wurl = url.split('/')[2];
     
     this.getPuzzle(wurl);
-    console.log(wurl);
+    console.log('loading', wurl);
 
     
   }

@@ -22,11 +22,11 @@ export class PuzzleListComponent implements OnInit {
          console.log("let me tell you something");
          for (let index = 0; index < this.puzzles.length; index++) {
            const element = this.puzzles[index];
-           if (this.puzzles[index].puzzle_category == "http://localhost:8000/category/1/"){
+           if (this.puzzles[index].puzzle_category == "http://localhost:8000/api/category/1/"){
             this.puzzles[index].puzzle_category = 'Easy'
-           } else if (this.puzzles[index].puzzle_category == "http://localhost:8000/category/2/"){
+           } else if (this.puzzles[index].puzzle_category == "http://localhost:8000/api/category/2/"){
             this.puzzles[index].puzzle_category = 'Medium'
-           }else if (this.puzzles[index].puzzle_category == "http://localhost:8000/category/3/"){
+           }else if (this.puzzles[index].puzzle_category == "http://localhost:8000/api/category/3/"){
             this.puzzles[index].puzzle_category = 'Hard'
            }
            

@@ -1,6 +1,8 @@
 from rest_framework import serializers, viewsets
 from .models import Difficulty, Puzzle
 
+
+
 # Serializers define the API representation.
 class DifficultySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

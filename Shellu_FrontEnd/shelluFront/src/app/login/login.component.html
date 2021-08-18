@@ -1,0 +1,23 @@
+<div class="loginPage">
+    <div class="loginContainer d-flex flex-column justify-content-center">
+        <div class="">
+            <img src="../../assets/icons/shellUicon.svg" width="60px" class="loginHeader">  
+            
+        </div>
+        
+        
+            <div class="form-group my-4 ">
+              <input type="username" [(ngModel)]="input.username" class="form-control inpu text-pink" id="username" aria-describedby="emailHelp" placeholder="Username">
+            </div>
+            <div class="form-group my-4 ">
+              <input type="password" [(ngModel)]="input.password" class="form-control inpu text-pink" id="password" placeholder="Password">
+            </div>
+
+            <button (click)="onLogin()" class="loginButton my-2">Log in</button>
+          
+        <br>
+        <p>Or create a new account, <a class="link" href="register">register</a> <br> if you don't have one!</p>
+        <br>
+        <p>If you just created your account <br>and have been redirected here, <br> don't worry, just log in!</p>
+    </div>
+</div>

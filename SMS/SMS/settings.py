@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost']
 
 CORS_ORIGIN_ALLOW_ALL=True
+CORS_ALLOW_CREDENTIALS = True
 # Application definition
 
 
@@ -76,11 +77,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'django.contrib.staticfiles',
 ]
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ]
-}
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -93,6 +90,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
 ]
+
+CORS_ALLOW_HEADERS = ('content-disposition', 'accept-encoding',
+                      'content-type', 'accept', 'origin', 'authorization','authentication')
 
 ROOT_URLCONF = 'SMS.urls'
 
@@ -113,6 +113,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'SMS.wsgi.application'
+
+
 
 
 # Database
@@ -180,3 +182,13 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
