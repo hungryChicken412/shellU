@@ -69,13 +69,18 @@ INSTALLED_APPS = [
     'profiles',
     'tinymce',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'django.contrib.sessions',
     'django.contrib.messages',
     'main.apps.MainConfig',
     'django.contrib.staticfiles',
 ]
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',

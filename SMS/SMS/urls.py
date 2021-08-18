@@ -22,6 +22,10 @@ from main.models import Difficulty, Puzzle
 from main.views import DiffViewSet, PuzzViewSet
 from rest_framework import routers, serializers, viewsets
 
+from rest_framework.authtoken.views import ObtainAuthToken
+from django.views.decorators.csrf import csrf_exempt
+
+
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -37,8 +41,8 @@ router.register(r'puzzles', PuzzViewSet)
 
 app_name = "app"
 urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api', include(router.urls)),
+    path('auth/', csrf_exempt(ObtainAuthToken.as_view())), #path('auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('app/', home_view, name="Home-View"),
     path('', landing, name="landing"),
