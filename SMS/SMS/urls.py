@@ -20,6 +20,8 @@ from django.conf.urls.static  import static
 from .views import home_view, register, logout_request, login_request, singleSlug, landing
 from main.models import Difficulty, Puzzle
 from main.views import DiffViewSet, PuzzViewSet
+from profiles.models import Profile
+from profiles.views import ProfileViewSet
 from rest_framework import routers, serializers, viewsets
 
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -32,6 +34,8 @@ from django.views.decorators.csrf import csrf_exempt
 router = routers.DefaultRouter()
 router.register(r'category', DiffViewSet)
 router.register(r'puzzles', PuzzViewSet)
+router.register(r'users/(?P<username>[-\w]+)', ProfileViewSet, basename='Profile')
+
 
 
 # Wire up our API using automatic URL routing.

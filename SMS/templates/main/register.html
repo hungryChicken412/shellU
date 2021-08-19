@@ -20,46 +20,92 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400&display=swap" rel="stylesheet">
+    <title>Shell.U | Universal Shell | User Register </title>
 
-
-
-
-    <title>bffbook - {% block title %}{% endblock title %}</title>
   </head>
-
-  <body>
-    {% include 'main/includes/navbar.html' %}
-    {% include 'main/includes/messages.html' %}
+<style>
+  body{
+    background-image: url({% static 'imgs/bg.jpg' %});
+    background-size: cover;
     
+  }
+  *, label {
+    font-family: 'Courier New', Courier, monospace;
+    color:white;
+  }
 
+  input {
+    background-color: rgb(17, 22, 27) !important;
+    border:none !important;
+
+    font-family: 'Josefin Sans', sans-serif !important;
+    
+    color:#ff0a5c !important;
+  }
+  
+.loginButton{
+    color:white;
+    
+    border-radius: 4px !important;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: large;
+    
+    text-align: center;
+    border-color: rgb(255, 13, 114) !important;
+    border-width: 2px !important;
+    height: 40px;
+    width: 120px;
+    
+    background-color: rgba(94, 94, 94, 0);
+    transition: all 0.25s ease-in;
+}
+.loginButton:hover{
+    background-color: rgba(255, 13, 114, 0.24);
+}
+.loginPage{
+  margin: 20px;
+  padding: 20px;
+  background-color: rgb(16, 15, 15) !important;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgb(255, 13, 114);
+}
+
+</style>
+  <body>
+    
+    {% include 'main/includes/messages.html' %}
     <div class="container">
       <br>
 
       {% if user.is_authenticated %}
 
-      {% block content %}
-      {% endblock content %}
+        {% block content %}
+        {% endblock content %}
 
       {% else %}
 
-          <div class="row">
-        <div class="col s12 m6 14">
-            <form method="POST">
+      <div class="row loginPage">
+
+        <div class="col s8 offset-s2">
+          <p class="pixelFont" style="text-align: center;">Welcome to Universal Shell!<br>Just fill out the information below so we can get started!</p>
+
+            <form method="POST" style="text-align: center;">
                 {% csrf_token %}
                 {{form.as_p}}
                 <br>
-                <button class="btn" type="submit">register</button>
+                <button class="loginButton" type="submit">Register</button>
             </form>
             <br>
-            If you already have an account <a href="/login" target="blank"><strong>login</strong></a> instead.
+            If you already have an account <a href="http://localhost:4200/login" class="nav-link" target="blank">login</a> instead.
         </div>
-        <div class="col s12 m6 14">
-            <img src={% static 'imgs/hi_there.gif' %}>
-        </div>
+
     </div>
-z
+
      {% endif %}
     </div>
+
+    <br>
+    <br>
 
     
     {% block scripts %}

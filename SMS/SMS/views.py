@@ -10,7 +10,7 @@ from .api.Tio import Tio
 
 
 host = ""
-
+app= "https://localhost:4200"
 
 def singleSlug(request, single_slug):
 	site = Tio()
@@ -105,10 +105,11 @@ def register(request):
 			messages.success(request,  f"New Account Created: {username}")
 			login(request, user)
 			messages.info(request,  f"You are now logged in as {username}")
-			return redirect(host + '/app/')
+			return redirect(app + '/login/')
 		else:
 			for msg in form.error_messages:
-				messages.error(request, f"{msg}: {form.error_messages[msg]}")
+				messages.error(request, f"Something Went Wrong! Password Don't Match or Username/Email already Exists!")
+
 	
 
 
@@ -119,7 +120,7 @@ def register(request):
 
         
 	if request.user.is_authenticated:
-		return redirect(host + '/app/')
+		return redirect(app + '/login/')
 	else:
 		return render(request, 'main/register.html', context )
 	
@@ -128,7 +129,7 @@ def register(request):
 def logout_request(request):
 	logout(request)
 	messages.info(request, f"Logged Out Successfully!")
-	return redirect(host + '/app/')
+	return redirect(host + '/')
 
 def login_request(request):
         

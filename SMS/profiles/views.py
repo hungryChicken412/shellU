@@ -1,6 +1,13 @@
 from django.shortcuts import render
 from .models import Profile
 from .forms import ProfileModelForm
+from .serializers import ProfileSerializer
+from rest_framework import routers, serializers, viewsets
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated 
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 # Create your views here.
 
 
@@ -21,3 +28,29 @@ def my_profile_view(request):
 	}
 
 	return render(request, 'profiles/myprofile.html', context)
+
+
+
+# Create your views here.
+# ViewSets define the view behavior.
+
+class ProfileViewSet(viewsets.ModelViewSet):
+	serializer_class = ProfileSerializer
+	
+	def get_queryset(self):
+		name = self.kwargs.get('username')
+		print(name)
+		if (name == 'me'):
+			name = self.request.user.username
+		else:
+			pass
+			
+		profile = Profile.objects.filter(username=name)
+		return profile
+
+	authenticationClasses = (TokenAuthentication,)
+	permissionClasses = (IsAuthenticated,)
+
+
+
+    

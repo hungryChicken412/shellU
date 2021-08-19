@@ -13,5 +13,6 @@ class DiffViewSet(viewsets.ModelViewSet):
 class PuzzViewSet(viewsets.ModelViewSet):
     queryset = Puzzle.objects.all()
     serializer_class = PuzzleSerializer
+    
     authenticationClasses = (TokenAuthentication,)
     permissionClasses = (IsAuthenticated,)
