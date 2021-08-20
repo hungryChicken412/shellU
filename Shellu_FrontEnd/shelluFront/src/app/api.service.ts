@@ -25,10 +25,17 @@ export class ApiService {
     if(typeof this.token === 'undefined' || this.token === null || this.token === 'undefined'){
       this.router.navigate(['login']);
     }
-    return this.http.get(this.baseUrl + '/api/puzzles/' + puzzle + '/' , {headers: this.httpHeaders})
+    return this.http.get(this.baseUrl + '/api/puzzle/' + puzzle + '/' , {headers: this.httpHeaders})
   }
 
   loginUser(userData: any): Observable<any> {
     return this.http.post(this.baseUrl + '/auth/', userData);
+  }
+
+  getUser(username:string): Observable<any>{
+    if(typeof this.token === 'undefined' || this.token === null || this.token === 'undefined'){
+      this.router.navigate(['login']);
+    }
+    return this.http.get(this.baseUrl + '/api/users/' + username + '/', {headers: this.httpHeaders})
   }
 }

@@ -3,6 +3,7 @@ import { ApiService } from '.././api.service';
 import { Router  } from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-playground',
   templateUrl: './playground.component.html',
@@ -12,11 +13,16 @@ import {switchMap} from 'rxjs/operators';
 export class PlaygroundComponent implements OnInit {
   
   q = {
-    "title": "",
-    "puzzle_category": "",
-    "puzzle_slug": "",
-    "content": "",
-    "answer": ""
+    "title": "Help me",
+    "puzzle_category": "http://localhost:8000/api/category/1/",
+    "puzzle_slug": "1",
+    "content": "<p>aqweqweqwe</p>",
+    "answer": "0",
+    "puzzleSolution": "",
+    "hint": "",
+    "starterCode": "",
+    "testCases": "",
+    "xps": 0
   };
 
   constructor(private api:ApiService, private router:Router) {
@@ -26,10 +32,11 @@ export class PlaygroundComponent implements OnInit {
    getPuzzle(name: string){
     this.api.getSinglePuzzle(name).subscribe(
       data => {
-        this.q = data;
+        this.q = data[0];
+
       },
       error => {
-        console.log(error);
+        alert(error);
       }
     )
   }

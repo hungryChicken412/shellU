@@ -1,4 +1,4 @@
-<h1>Dashboard</h1>
+<h1 class="niceFont">Dashboard</h1>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
 
 <div class="content">
@@ -6,15 +6,15 @@
         <div class="col-sm-6 mx-2 card bg-dark">
             <div class="row">
                 <div class="col-sm-4">
-                    <img src="../../assets/icons/userIcon.png" alt="user icon" class="img-fluid">
+                    <img src={{userdata[0].avatar}} alt="user icon" class="img-fluid">
                 </div>
                 <div class="col-sm-8">
-                    <h1 class="text-pink my-0">Mark#123</h1>
-                    <p class="info"> User info stuff what he likes and stuff that he doesn't like and some extra stuff to fill up the in lines. .</p>
+                    <h1 class="text-pink my-0">{{userdata[0].username}}</h1>
+                    <p class="info"> {{userdata[0].info}}</p>
                     <div class="progress bar">
                         <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <p>400XP</p>
+                    <p>{{userdata[0].XP}} XP</p>
                 </div>
 
             </div>
@@ -51,10 +51,10 @@
                     <p class="info">Language(s)</p>
                 </div>
                 <div class="col-sm-6 text-end" >
-                    <p class="text-pink">400</p>
-                    <p class="text-pink">Sleepy Baby</p>
-                    <p class="text-pink">15210</p>
-                    <p class="text-pink">C#, C, C++, Python, PHP </p>
+                    <p class="text-pink">{{userdata[0].XP}} XP</p>
+                    <p class="text-pink">{{userdata[0].level}}</p>
+                    <p class="text-pink">{{userdata[0].global_rank}}</p>
+                    <p class="text-pink">{{userdata[0].languages}} </p>
                 </div>
             </div>
         </div>
@@ -79,8 +79,8 @@
                         <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <br>
-                    <p class="text-pink">15</p>
-                    <p class="text-pink">120</p>
+                    <p class="text-pink">{{userdata[0].puzzles_completed}}</p>
+                    <p class="text-pink">{{userdata[0].courses_completed}}</p>
                 </div>
             </div>
         </div>

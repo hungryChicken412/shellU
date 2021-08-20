@@ -59,6 +59,11 @@ p {color: #dee2d8; font-family: 'Josefin Sans', sans-serif;}
     vertical-align: center;
 
 }
+
+.niceFont{
+    font-family: 'Josefin Sans', sans-serif !important;
+}
+
 .card2{
     margin: 4px 4px 4px 4px;
 

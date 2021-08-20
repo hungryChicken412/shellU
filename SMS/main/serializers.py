@@ -1,3 +1,4 @@
+from django.db.models import fields
 from rest_framework import serializers, viewsets
 from .models import Difficulty, Puzzle
 
@@ -12,4 +13,9 @@ class DifficultySerializer(serializers.HyperlinkedModelSerializer):
 class PuzzleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Puzzle
-        fields = ['title', 'puzzle_category', 'puzzle_slug', 'content','answer']
+        fields = ['title', 'puzzle_category', 'puzzle_slug', 'xps']
+
+class PuzzlePlaygroundSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Puzzle
+        fields = ['title', 'puzzle_category', 'puzzle_slug', 'content','answer', 'puzzleSolution', 'hint', 'starterCode', 'testCases', 'xps']

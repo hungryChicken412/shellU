@@ -11,6 +11,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             'username',
             'avatar',
             'XP',
+            'info',
             'level',
             'global_rank',
             'puzzles_completed',

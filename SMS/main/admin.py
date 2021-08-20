@@ -5,14 +5,14 @@ from django.db import models
 
 
 # Register your models here.
-
+"""
 class CourseAdmin(admin.ModelAdmin):
 	formfield_overrides = {
-		models.TextField: {'widget': TinyMCE()}
+		'content': {'widget': TinyMCE()}
 	}
 
-
+"""
 
 admin.site.register(Difficulty)
 admin.site.register(PuzzleSolution)
-admin.site.register(Puzzle, CourseAdmin)
+admin.site.register(Puzzle) #CourseAdmin

@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from datetime import datetime
 
+
 # Create your models here.
 
 
@@ -24,9 +25,16 @@ class Puzzle(models.Model):
 	title = models.CharField(max_length=200)
 	content = models.TextField()
 	published = models.DateTimeField("date published", default=datetime.now())
+
 	puzzle_slug = models.CharField(max_length=200, default=1)
 	puzzle_category = models.ForeignKey(Difficulty, default=1, verbose_name="Difficulty", on_delete=models.CASCADE)
+	
 	answer = models.CharField(max_length=200, default=0)
+	puzzleSolution = models.TextField(max_length=500, default='')
+	hint = models.TextField(max_length=200, default='')
+	starterCode = models.TextField(max_length=200, default='')
+	testCases = models.TextField(max_length=300, default='')
+	xps = models.IntegerField(default=0)
 
 
 	

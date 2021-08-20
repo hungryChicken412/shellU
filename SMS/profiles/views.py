@@ -39,7 +39,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
 	
 	def get_queryset(self):
 		name = self.kwargs.get('username')
-		print(name)
 		if (name == 'me'):
 			name = self.request.user.username
 		else:
