@@ -13,6 +13,14 @@ export class ApiService {
   baseUrl = "http://localhost:8000";
   token = localStorage.getItem('token');
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Authorization' : 'token ' + this.token});
+  
+  executionHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'x-rapidapi-host': "judge0-ce.p.rapidapi.com",
+    'x-rapidapi-key': "6d7fc6a905msh8b2442bfb68098bp13a19fjsn444337cba7d8"
+  });
+
+  codexURL = "https://codexweb.netlify.app/.netlify/functions/enforceCode";
 
   getAllPuzzles(): Observable<any>{
     if(typeof this.token === 'undefined' || this.token === null || this.token === 'undefined'){
@@ -22,9 +30,10 @@ export class ApiService {
   }
 
   getSinglePuzzle(puzzle: any): Observable<any> {
-    if(typeof this.token === 'undefined' || this.token === null || this.token === 'undefined'){
+    /*if(typeof this.token === 'undefined' || this.token === null || this.token === 'undefined'){
       this.router.navigate(['login']);
     }
+    */
     return this.http.get(this.baseUrl + '/api/puzzle/' + puzzle + '/' , {headers: this.httpHeaders})
   }
 
@@ -38,4 +47,6 @@ export class ApiService {
     }
     return this.http.get(this.baseUrl + '/api/users/' + username + '/', {headers: this.httpHeaders})
   }
+
+
 }

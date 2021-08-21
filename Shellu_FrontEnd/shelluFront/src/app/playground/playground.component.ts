@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '.././api.service';
 import { Router  } from '@angular/router';
 import {switchMap} from 'rxjs/operators';
-
+/* eslint-disable */
+// @ts-ignore
+import { piston } from 'piston-client';
+import { NgZone } from '@angular/core';
+/* eslint-enable */
 
 @Component({
   selector: 'app-playground',
@@ -25,7 +29,15 @@ export class PlaygroundComponent implements OnInit {
     "xps": 0
   };
 
-  constructor(private api:ApiService, private router:Router) {
+  code = "";
+  language = "python";
+  input ="";
+  output = "#Your code's output will appear here!";
+
+  count = 0
+  
+
+  constructor(private api:ApiService, private router:Router, private ngZone: NgZone )  {
 
    }
 
@@ -36,9 +48,44 @@ export class PlaygroundComponent implements OnInit {
 
       },
       error => {
-        alert(error);
+        /*alert(error);*/
       }
     )
+  }
+
+  executeCode(){
+    
+    this.output = "##Evaluating!";
+    (async () => {
+      
+      const client = piston({ server: "https://emkc.org" });
+      
+      const runtimes = await client.runtimes();
+      // [{ language: 'python', version: '3.9.4', aliases: ['py'] }, ...]
+  
+      const result = await client.execute(this.language, this.code);
+      // { language: 'python', version: '3.9.4', run: {
+      //     stdout: 'Hello World!\n',
+      //     stderr: '',
+      //     code: 0,
+      //     signal: null,
+      //     output: 'Hello World!\n'
+      // }}
+      
+      this.output = result.run.output;
+      
+      
+  
+  })();
+  
+  }
+
+  plusOne(){
+    this.count += 1;
+  }
+
+  changeCounter(codeOutput: string):void{
+    this.output = codeOutput;
   }
 
 

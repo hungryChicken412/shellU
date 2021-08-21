@@ -34,7 +34,7 @@
                         <h2>{{q.title}}</h2>
                         <p>Desired Output:</p>
 <pre>
-<code [innerHTML]="q.answer" wrap="off"  contenteditable="" class="language-python"></code>
+<code [innerHTML]="q.answer" wrap="off" class="language-python"></code>
 </pre>
                         
                         <div [innerHTML]="q.content"></div>
@@ -68,12 +68,12 @@
                     
                     <hr>
 <pre>
-<code wrap="off"  contenteditable="" class="language-python">if(1==1):
-    print("ok");</code>
+<code wrap="off" (click)="plusOne();"class="language-python" [innerHTML]="output"></code>
 </pre>
+
                     <hr>
     
-                    <p>Python 3, on TIO</p>
+                    <a class="nav-link" href="https://github.com/engineer-man/piston">Thanks to Piston-Compiler <br> by Engineer-Man</a>
                 </div>
                 
 
@@ -101,13 +101,18 @@
             <div class="tab-content px-2 " id="myTabContent2">
             <div class="tab-pane fade show active" id="solution" role="tabpanel" aria-labelledby="home-tab">
                 <div class="card-body context">
-                    <select class="form-select my-2">
-                        <option class="form-select" value="1">Python3</option>
+                    <select [(ngModel)]="language" class="form-select my-2">
+                        <option class="form-select" selected value="python">Python 3</option>
+                        <option class="form-select" value="bash">Bash</option>
+                        <option class="form-select" value="javascript">Javascript</option>
+                        <option class="form-select" value="java">Java</option>
+                        <option class="form-select" value="c">C</option>
+                        <option class="form-select" value="c++">C++</option>
                     </select>
-                    <p class="px-2 text-muted">I'm sorry but at this moment, only 'Python 3' is supported!</p>
-                    <button class="btn loginButton editorButton">RUN</button>
                     
-                    <textarea [innerHTML]="q.starterCode" spellcheck="false" class="code editor language-python" wrap="off" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" id="codeEditor" rows="10" cols="40"></textarea>
+                    <button class="btn loginButton editorButton" (click)="executeCode()">RUN</button>
+                    
+                    <textarea [(ngModel)]="code" [innerHTML]="q.starterCode" spellcheck="false" class="code editor language-python" wrap="off" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" id="codeEditor" rows="10" cols="40"></textarea>
                 </div>
             </div>
             <div class="tab-pane fade" id="scratchpad" role="tabpanel" aria-labelledby="profile-tab">

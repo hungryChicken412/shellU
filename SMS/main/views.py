@@ -34,3 +34,8 @@ class PuzzlePlaygrounViewSet(viewsets.ModelViewSet):
     
     authenticationClasses = (TokenAuthentication,)
     permissionClasses = (IsAuthenticated,)
+
+
+
+
+
