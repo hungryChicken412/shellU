@@ -18,4 +18,4 @@ class PuzzleSerializer(serializers.HyperlinkedModelSerializer):
 class PuzzlePlaygroundSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Puzzle
-        fields = ['title', 'puzzle_category', 'puzzle_slug', 'content','answer', 'puzzleSolution', 'hint', 'starterCode', 'testCases', 'xps']
+        fields = ['title', 'puzzle_category', 'puzzle_slug', 'content', 'puzzleDesiredOutput','functionName', 'puzzleSolution', 'hint', 'starterCode', 'testCases', 'xps']

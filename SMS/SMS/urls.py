@@ -21,7 +21,7 @@ from .views import home_view, register, logout_request, login_request, singleSlu
 from main.models import Difficulty, Puzzle
 from main.views import DiffViewSet, PuzzViewSet, PuzzlePlaygrounViewSet
 from profiles.models import Profile
-from profiles.views import ProfileViewSet
+from profiles.views import ProfileViewSet, SolvedByUser
 from rest_framework import routers, serializers, viewsets
 
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -35,7 +35,8 @@ router = routers.DefaultRouter()
 router.register(r'category', DiffViewSet)
 router.register(r'puzzles', PuzzViewSet)
 router.register(r'puzzle/(?P<puzzleSlug>[-\w]+)', PuzzlePlaygrounViewSet, basename='Puzzle')
-router.register(r'users/(?P<puzzleSlug>[-\w]+)', ProfileViewSet, basename='Profile')
+router.register(r'users/(?P<username>[-\w]+)', ProfileViewSet, basename='Profile')
+router.register(r'solved/(?P<puzzleSlug>[-\w]+)', SolvedByUser, basename='Profile')
 
 
 

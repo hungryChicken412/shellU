@@ -32,12 +32,13 @@
                         </h1>
                         <hr>
                         <h2>{{q.title}}</h2>
+                        <div [innerHTML]="q.content"></div>
                         <p>Desired Output:</p>
 <pre>
-<code [innerHTML]="q.answer" wrap="off" class="language-python"></code>
+<code [innerHTML]="q.puzzleDesiredOutput" wrap="off" class="language-python"></code>
 </pre>
                         
-                        <div [innerHTML]="q.content"></div>
+                        
                     </div>
                 </div>
                 <div class="tab-pane fade" id="hints" role="tabpanel" aria-labelledby="profile-tab">
@@ -50,9 +51,7 @@
                 <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="card-body context">
 <pre>
-<code class="language-python">print('hi');
-    but how?
-</code>
+<code [innerHTML]="q.puzzleSolution" class="language-python"></code>
 </pre>
                     </div>
                 </div>
@@ -68,7 +67,7 @@
                     
                     <hr>
 <pre>
-<code wrap="off" (click)="plusOne();"class="language-python" [innerHTML]="output"></code>
+<code wrap="off" class="language-python" [innerHTML]="output"></code>
 </pre>
 
                     <hr>
@@ -103,29 +102,34 @@
                 <div class="card-body context">
                     <select [(ngModel)]="language" class="form-select my-2">
                         <option class="form-select" selected value="python">Python 3</option>
-                        <option class="form-select" value="bash">Bash</option>
                         <option class="form-select" value="javascript">Javascript</option>
+                        <!--
+                            NOW NOW! DON'T LOOK HERE! TECHNICALLY THESE WILL WORK BUT DO NOT TOUCH THEM!, IT'LL JUST RETURN AN ERROR :/
                         <option class="form-select" value="java">Java</option>
+                        <option class="form-select" value="bash">Bash</option>
                         <option class="form-select" value="c">C</option>
                         <option class="form-select" value="c++">C++</option>
+                        -->
                     </select>
+                    <p class="text-muted"> As of now only Python is supported 100% and Javscript "SHOULD WORK" I'm still working on it though :)</p>
+                    
                     
                     <button class="btn loginButton editorButton" (click)="executeCode()">RUN</button>
                     
-                    <textarea [(ngModel)]="code" [innerHTML]="q.starterCode" spellcheck="false" class="code editor language-python" wrap="off" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" id="codeEditor" rows="10" cols="40"></textarea>
+                    <textarea [(ngModel)]="code" id="codeEditor"spellcheck="false" class="code editor language-python" wrap="off" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" id="codeEditor" rows="10" cols="40"></textarea>
+                    <p class="text-warning"> Write the code Wrapped in a function with the name <span class="text-green terminalFont">"{{q.functionName}}"</span> as given in the Boilerplate-Code, else it won't work</p>
                 </div>
             </div>
             <div class="tab-pane fade" id="scratchpad" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="card-body context">
-                    <textarea placeholer="WRITE ANYTHING HERE!" spellcheck="false" class="code editor" wrap="off" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" id="codeEditor" rows="10" cols="40"></textarea>
+                    <textarea spellcheck="false" class="code editor text-green" wrap="off">"WRITE ANYTHING HERE!"  </textarea>
 
                 </div>
             </div>
             <div class="tab-pane fade" id="testcases" role="tabpanel" aria-labelledby="contact-tab">
                 <div class="card-body context">
 <pre>
-<code [innerHTML]="q.testCases" class="language-python">
-print('hi');</code>
+<code [innerHTML]="q.testCases" class="language-python"></code>
 </pre>
 
                 </div>

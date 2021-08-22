@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from .models import Profile
 from .forms import ProfileModelForm
@@ -7,7 +8,9 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated 
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+import sys
+sys.path.append('..')
+from main.models import Puzzle
 # Create your views here.
 
 
@@ -51,5 +54,29 @@ class ProfileViewSet(viewsets.ModelViewSet):
 	permissionClasses = (IsAuthenticated,)
 
 
+class SolvedByUser(viewsets.ModelViewSet):
+	serializer_class = ProfileSerializer
+	def get_queryset(self):
+		puzzleSlug = self.kwargs.get('puzzleSlug')
+		puzzle = Puzzle.objects.get(puzzle_slug=puzzleSlug)
+		print(self.request.user.username)
+		if puzzle.solvers.filter(pk=self.request.user.pk).exists():
+			puzzle.solvers.remove(self.request.user)
+			print("User Already Exists!")
+		else:
+			puzzle.solvers.add(self.request.user)
+			profile = Profile.objects.get(username=self.request.user.username)
+			profile.XP += puzzle.xps
+			
+			profile.save()
+			print(profile.XP)
+			print("username is"+ profile.username)
+			print("userSolved")
+			
+	
+	authenticationClasses = (TokenAuthentication,)
+	permissionClasses = (IsAuthenticated,)
+
+			
 
     

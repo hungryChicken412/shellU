@@ -21,11 +21,12 @@ export class PlaygroundComponent implements OnInit {
     "puzzle_category": "http://localhost:8000/api/category/1/",
     "puzzle_slug": "1",
     "content": "<p>aqweqweqwe</p>",
-    "answer": "0",
+    "puzzleDesiredOutput" : "",
+    "functionName": "0",
     "puzzleSolution": "",
     "hint": "",
     "starterCode": "",
-    "testCases": "",
+    "testCases" : "",
     "xps": 0
   };
 
@@ -33,10 +34,6 @@ export class PlaygroundComponent implements OnInit {
   language = "python";
   input ="";
   output = "#Your code's output will appear here!";
-
-  count = 0
-  
-
   constructor(private api:ApiService, private router:Router, private ngZone: NgZone )  {
 
    }
@@ -45,6 +42,7 @@ export class PlaygroundComponent implements OnInit {
     this.api.getSinglePuzzle(name).subscribe(
       data => {
         this.q = data[0];
+        this.code = this.q.starterCode;
 
       },
       error => {
@@ -56,6 +54,23 @@ export class PlaygroundComponent implements OnInit {
   executeCode(){
     
     this.output = "##Evaluating!";
+    var finalExcecutionCMD1;
+    var finalExcecutionCMD2;
+    var lines = this.q.testCases.split('\n');
+    const aa1 = lines[1].split('->');
+    const bb1 = lines[2].split('->');
+    
+    if (this.language.valueOf() == "python"){
+    finalExcecutionCMD1 = this.code + '\n\n' + "print(" + this.q.functionName + '(' + aa1[0].trim() + '))';
+    finalExcecutionCMD2 = this.code + '\n\n' + "print(" + this.q.functionName + '(' + bb1[0].trim() + '))';
+    } else if (this.language.valueOf() == "javascript"){
+      finalExcecutionCMD1 = this.code + '\n\n' + "console.log(" + this.q.functionName + '(' + aa1[0].trim() + '))';
+      finalExcecutionCMD2 = this.code + '\n\n' + "console.log(" + this.q.functionName + '(' + bb1[0].trim() + '))';
+    }
+    
+    
+
+    
     (async () => {
       
       const client = piston({ server: "https://emkc.org" });
@@ -63,38 +78,35 @@ export class PlaygroundComponent implements OnInit {
       const runtimes = await client.runtimes();
       // [{ language: 'python', version: '3.9.4', aliases: ['py'] }, ...]
   
-      const result = await client.execute(this.language, this.code);
-      // { language: 'python', version: '3.9.4', run: {
-      //     stdout: 'Hello World!\n',
-      //     stderr: '',
-      //     code: 0,
-      //     signal: null,
-      //     output: 'Hello World!\n'
-      // }}
+      const result1 = await client.execute(this.language, finalExcecutionCMD1);
+      this.output = result1.run.output;
+      if (this.output.trim().valueOf() === this.q.puzzleDesiredOutput.trim().valueOf()){
+        const result2 = await client.execute(this.language, finalExcecutionCMD2);
+        this.output += '\n' + result2.run.output;
+        if (result2.run.output.trim().valueOf() == bb1[1].trim().valueOf()){
+          this.output += '\n' + "! Congratulations! You Passed !";
+        } else {
+          this.output += '\n' + "[ERROR]: Second test failed!";
+        }
+      } else {
+        this.output += '\n' + "[ERROR]: First test failed!";
+      }
       
-      this.output = result.run.output;
+      
       
       
   
   })();
+    
+  }
   
-  }
-
-  plusOne(){
-    this.count += 1;
-  }
-
-  changeCounter(codeOutput: string):void{
-    this.output = codeOutput;
-  }
-
-
   ngOnInit(): void {
     const url = this.router.url;
     const wurl = url.split('/')[2];
     
     this.getPuzzle(wurl);
-    console.log('loading', wurl);
+    
+    
 
     
   }
