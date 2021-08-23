@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HalloffameComponent } from './halloffame/halloffame.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path:':name', redirectTo: '/playground/:name'},
     ]},
   { path:'login', component: LoginComponent },
+  { path:'scoreboard', component: HalloffameComponent },
 
 
 ];

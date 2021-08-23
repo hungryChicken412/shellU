@@ -11,11 +11,15 @@ class DifficultySerializer(serializers.HyperlinkedModelSerializer):
         fields = ['puzzle_category', 'category_summary']
 
 class PuzzleSerializer(serializers.HyperlinkedModelSerializer):
+    
     class Meta:
         model = Puzzle
         fields = ['title', 'puzzle_category', 'puzzle_slug', 'xps']
 
 class PuzzlePlaygroundSerializer(serializers.HyperlinkedModelSerializer):
+    hasDone = False
     class Meta:
         model = Puzzle
-        fields = ['title', 'puzzle_category', 'puzzle_slug', 'content', 'puzzleDesiredOutput','functionName', 'puzzleSolution', 'hint', 'starterCode', 'testCases', 'xps']
+        fields = ['title', 'puzzle_category', 'puzzle_slug', 'content', 'puzzleDesiredOutput','functionName', 'puzzleSolution', 'hint', 'starterCode', 'testCases', 'xps', 'hasDone']
+
+

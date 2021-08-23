@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Puzzle, Difficulty, PuzzleSolution
+from .models import Puzzle, Difficulty
 from tinymce.widgets import TinyMCE
 from django.db import models
 
@@ -14,5 +14,4 @@ class CourseAdmin(admin.ModelAdmin):
 """
 
 admin.site.register(Difficulty)
-admin.site.register(PuzzleSolution)
 admin.site.register(Puzzle) #CourseAdmin

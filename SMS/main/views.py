@@ -4,6 +4,9 @@ from .serializers import DifficultySerializer, PuzzleSerializer, PuzzlePlaygroun
 from rest_framework import routers, serializers, viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated 
+from django.contrib.auth.models import User
+from django.db.models.aggregates import Max
+
 # Create your views here.
 # ViewSets define the view behavior.
 class DiffViewSet(viewsets.ModelViewSet):
@@ -12,13 +15,13 @@ class DiffViewSet(viewsets.ModelViewSet):
 
 class PuzzViewSet(viewsets.ModelViewSet):
     queryset = Puzzle.objects.all()
+    
     serializer_class = PuzzleSerializer
     
     authenticationClasses = (TokenAuthentication,)
     permissionClasses = (IsAuthenticated,)
 
 class PuzzlePlaygrounViewSet(viewsets.ModelViewSet):
-    queryset = Puzzle.objects.all()
     serializer_class = PuzzlePlaygroundSerializer
 
     def get_queryset(self):
@@ -29,12 +32,18 @@ class PuzzlePlaygrounViewSet(viewsets.ModelViewSet):
         else:
             pass
 
-        puzzle = Puzzle.objects.filter(puzzle_slug=name)
-        return puzzle
+        puzzle = Puzzle.objects.get(puzzle_slug=name)
+
+        try:
+            user = puzzle.solvers.get(username=self.request.user.username)
+            puzzle.hasDone = True
+        except User.DoesNotExist:
+            pass
+        
+        return [puzzle]
     
     authenticationClasses = (TokenAuthentication,)
     permissionClasses = (IsAuthenticated,)
-
 
 
 

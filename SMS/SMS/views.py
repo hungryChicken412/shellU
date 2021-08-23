@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from main.models import Puzzle,Difficulty,PuzzleSolution
+from main.models import Puzzle,Difficulty
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -11,6 +11,7 @@ from .api.Tio import Tio
 
 host = ""
 app= "https://localhost:4200"
+"""
 
 def singleSlug(request, single_slug):
 	site = Tio()
@@ -68,7 +69,7 @@ def singleSlug(request, single_slug):
 
 	return HttpResponse(f"{single_slug} does not correspond to anything.")
 
-
+"""
 
 def landing(request):
 	# return HttpResponse('Hello World')

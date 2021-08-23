@@ -71,6 +71,10 @@ textarea {
     
 }
 
+.font-fancy{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 
 .context{
     border-width: 20px;
@@ -139,4 +143,30 @@ textarea {
     background-color: #1e2125;
 }
 
+.congratulationsBanner{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.35);
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    text-align: center;
+    flex-direction: column;
+    animation-name: congratsBanner;
+    animation-duration: 4s;
+    
+}
+
+@keyframes congratsBanner {
+    0%   {background-color:rgba(0, 0, 0, 0);left:0;top:0;opacity: 0;}
+    100% {background-color:rgba(0, 0, 0, 0.35);left:0;top:0;opacity: 1;}
+  }
+
+.congratsContainer{
+    padding: 20px
+}
 

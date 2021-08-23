@@ -20,3 +20,12 @@ class ProfileSerializer(serializers.ModelSerializer):
         ]
 
 
+class HighscoreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = [
+            'username',
+            'XP',
+            'level',
+        ]
+    

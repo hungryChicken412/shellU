@@ -6,6 +6,7 @@ import {switchMap} from 'rxjs/operators';
 // @ts-ignore
 import { piston } from 'piston-client';
 import { NgZone } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 /* eslint-enable */
 
 @Component({
@@ -19,7 +20,7 @@ export class PlaygroundComponent implements OnInit {
   q = {
     "title": "Help me",
     "puzzle_category": "http://localhost:8000/api/category/1/",
-    "puzzle_slug": "1",
+    "puzzle_slug": '1',
     "content": "<p>aqweqweqwe</p>",
     "puzzleDesiredOutput" : "",
     "functionName": "0",
@@ -27,8 +28,10 @@ export class PlaygroundComponent implements OnInit {
     "hint": "",
     "starterCode": "",
     "testCases" : "",
-    "xps": 0
+    "xps": 0,
+    "hasDone" : true,
   };
+  nextPuzzleLink = "";
 
   code = "";
   language = "python";
@@ -43,6 +46,13 @@ export class PlaygroundComponent implements OnInit {
       data => {
         this.q = data[0];
         this.code = this.q.starterCode;
+        var slug = parseInt(this.q.puzzle_slug) + 1 ;
+        this.nextPuzzleLink = '/playground/'+slug.toString();
+        if (this.q.hasDone){
+          this.q.title += " - [COMPLETED]";
+          
+        }
+        console.log(this.nextPuzzleLink);
 
       },
       error => {
@@ -56,9 +66,12 @@ export class PlaygroundComponent implements OnInit {
     this.output = "##Evaluating!";
     var finalExcecutionCMD1;
     var finalExcecutionCMD2;
-    var lines = this.q.testCases.split('\n');
-    const aa1 = lines[1].split('->');
-    const bb1 = lines[2].split('->');
+    
+    var lines = this.q.testCases.split('|');
+    console.log(lines)
+    var aa1 = lines[1].split(':');
+    console.log(aa1)
+    var bb1 = lines[2].split(':');
     
     if (this.language.valueOf() == "python"){
     finalExcecutionCMD1 = this.code + '\n\n' + "print(" + this.q.functionName + '(' + aa1[0].trim() + '))';
@@ -85,6 +98,7 @@ export class PlaygroundComponent implements OnInit {
         this.output += '\n' + result2.run.output;
         if (result2.run.output.trim().valueOf() == bb1[1].trim().valueOf()){
           this.output += '\n' + "! Congratulations! You Passed !";
+          this.submitPuzzle(this.q.puzzle_slug);
         } else {
           this.output += '\n' + "[ERROR]: Second test failed!";
         }
@@ -98,6 +112,20 @@ export class PlaygroundComponent implements OnInit {
   
   })();
     
+  }
+
+  submitPuzzle(slug:string){
+    this.api.puzzleSubmit(slug).subscribe(
+      data => {
+        /**/
+        (<HTMLInputElement>document.getElementById("congratsBanner")).style.display = "flex";
+        
+
+      },
+      error => {
+        /*alert(error);*/
+      }
+    )
   }
   
   ngOnInit(): void {

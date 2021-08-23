@@ -12,6 +12,7 @@ import { PuzzleListComponent } from './puzzle-list/puzzle-list.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { HalloffameComponent } from './halloffame/halloffame.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     PlaygroundComponent,
     PuzzleListComponent,
     NotfoundComponent,
-    LoginComponent
+    LoginComponent,
+    HalloffameComponent
   ],
   imports: [
     MatSidenavModule,

@@ -43,19 +43,9 @@ class Puzzle(models.Model):
 	testCases = models.TextField(max_length=300, default='')
 	xps = models.IntegerField(default=0)
 
+	hasDone = models.BooleanField(default=0)
+
 
 	
 	def __str__(self):
 		return self.title
-
-
-
-class PuzzleSolution(models.Model):
-	puzzle = models.OneToOneField(Puzzle, on_delete=models.CASCADE)
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	created = models.DateTimeField(auto_now_add = True)
-	content = models.TextField(null=True)
-
-	def __str__(self):
-		return f"{self.user.username}--{self.puzzle.title}"
-

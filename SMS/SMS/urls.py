@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static  import static
-from .views import home_view, register, logout_request, login_request, singleSlug, landing
+from .views import home_view, register, logout_request, login_request, landing
 from main.models import Difficulty, Puzzle
 from main.views import DiffViewSet, PuzzViewSet, PuzzlePlaygrounViewSet
 from profiles.models import Profile
-from profiles.views import ProfileViewSet, SolvedByUser
+from profiles.views import ProfileViewSet, SolvedByUser, HighscoreboardViewSet
 from rest_framework import routers, serializers, viewsets
 
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -37,6 +37,7 @@ router.register(r'puzzles', PuzzViewSet)
 router.register(r'puzzle/(?P<puzzleSlug>[-\w]+)', PuzzlePlaygrounViewSet, basename='Puzzle')
 router.register(r'users/(?P<username>[-\w]+)', ProfileViewSet, basename='Profile')
 router.register(r'solved/(?P<puzzleSlug>[-\w]+)', SolvedByUser, basename='Profile')
+router.register(r'topten', HighscoreboardViewSet, basename='Profile')
 
 
 
@@ -50,10 +51,9 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('auth/', csrf_exempt(ObtainAuthToken.as_view())), #path('auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
-    path('app/', home_view, name="Home-View"),
+
     path('', landing, name="landing"),
-    path('app/<single_slug>', singleSlug, name="single_slug"),
-    path('', include('profiles.urls')),
+    
     path('tinymce/', include('tinymce.urls')),
     path('register', register, name="register"),
     path('logout/', logout_request, name="logout"),

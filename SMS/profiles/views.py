@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from .models import Profile
 from .forms import ProfileModelForm
-from .serializers import ProfileSerializer
+from .serializers import ProfileSerializer, HighscoreSerializer
 from rest_framework import routers, serializers, viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated 
@@ -59,24 +59,45 @@ class SolvedByUser(viewsets.ModelViewSet):
 	def get_queryset(self):
 		puzzleSlug = self.kwargs.get('puzzleSlug')
 		puzzle = Puzzle.objects.get(puzzle_slug=puzzleSlug)
-		print(self.request.user.username)
+		profile = Profile.objects.get(username=self.request.user.username)
 		if puzzle.solvers.filter(pk=self.request.user.pk).exists():
-			puzzle.solvers.remove(self.request.user)
-			print("User Already Exists!")
+			#puzzle.solvers.remove(self.request.user)
+			#print("User Already Exists!")
+			pass
 		else:
 			puzzle.solvers.add(self.request.user)
-			profile = Profile.objects.get(username=self.request.user.username)
-			profile.XP += puzzle.xps
-			
+			profile.XP = profile.XP + puzzle.xps
+			profile.puzzles_completed += 1
+			xp = profile.XP
+			if (xp < 100):
+				profile.level = 0
+			elif (xp > 100 and xp < 250):
+				profile.level = 1
+			elif (xp > 250 and xp < 600):
+				profile.level = 2
+			elif (xp > 600 and xp < 1000):
+				profile.level = 3
+			elif (xp > 1000 and xp < 1500):
+				profile.level = 4
+			elif (xp > 1500):
+				profile.level = 5
+
+
 			profile.save()
-			print(profile.XP)
-			print("username is"+ profile.username)
-			print("userSolved")
+		
+		return  Profile.objects.filter(username=self.request.user.username)
 			
 	
 	authenticationClasses = (TokenAuthentication,)
 	permissionClasses = (IsAuthenticated,)
 
 			
-
+class HighscoreboardViewSet(viewsets.ModelViewSet):
+	serializer_class = HighscoreSerializer
+	def get_queryset(self):
+		users = Profile.objects.all().order_by('XP')
+		return users[::-1]
+	
+	authenticationClasses = (TokenAuthentication,)
+	permissionClasses = (IsAuthenticated,)
     
