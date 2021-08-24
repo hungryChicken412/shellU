@@ -1,4 +1,4 @@
-<h1 class="niceFont">Dashboard</h1>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
 
 <div class="content">
@@ -15,9 +15,6 @@
                         <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <p>{{userdata[0].XP}} XP</p>
-                    <button type="button" class="btn btn-info rounded-0 shadow-lg terminalFont" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-                        Edit
-                      </button>
                 </div>
 
             </div>
@@ -39,8 +36,8 @@
                     <p class="text-pink">12+</p>
                     <p class="text-pink">12+</p>
                 </div>
+                -->
             </div>
-            -->
         </div>
     </div>
 
@@ -120,39 +117,7 @@
             
         </div>
     </div>
-    
-    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModallabel" aria-hidden="true">
-        
 
-        <div class="modal-dialog bg-dark">
-          <div class="modal-content bg-dark">
-            <div class="modal-header border-0">
-              <h1 class="h1 nav-link terminalFont" id="editProfileModallabel">Edit Profile</h1>
-              <button type="button" class="btn-close rounded-0" data-bs-dismiss="modal" aria-label="Close"></button>
-              
-            </div>
-            <div class="modal-body">
-                <hr>
-                <div class="form-group my-3">
-                    <label for="aboutMeText" class="terminalFont">Tell us about yourself!</label>
-                    <input type="text" class="form-control inpu" id="aboutMeText" [(ngModel)]="userdata[0].info" aria-describedby="aboutMe" placeholder={{userdata[0].info}}>
-                    
-                </div>
-                <div class="form-group my-3">
-                    <label for="languagesText" class="terminalFont">Your preffered Languages</label>
-                    <input type="text" class="form-control inpu" id="languagesText" [(ngModel)]="userdata[0].languages" aria-describedby="aboutMe" placeholder={{userdata[0].languages}}>
-                </div>
-                <br>
-                <hr>
-                <small id="emailHelp" class="form-text text-muted">* Everyone will see this information as part of your profile overview!</small>
-            </div>
-            <div class="modal-footer border-0">
-              <button type="button" class="btn btn-danger rounded-0" data-bs-dismiss="modal">Close</button>
-              <button type="button" (click)="editUserData()" class="btn btn-success rounded-0">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
 
 </div>

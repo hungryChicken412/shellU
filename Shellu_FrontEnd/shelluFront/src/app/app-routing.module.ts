@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { PlaygroundComponent } from './playground/playground.component';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { PuzzleListComponent } from './puzzle-list/puzzle-list.component';
 
 const routes: Routes = [
@@ -22,6 +23,8 @@ const routes: Routes = [
     ]},
   { path:'login', component: LoginComponent },
   { path:'scoreboard', component: HalloffameComponent },
+  { path:'profile/:username', component: ProfileViewComponent },
+  { path:'**', component: NotfoundComponent },
 
 
 ];

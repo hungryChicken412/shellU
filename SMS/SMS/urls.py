@@ -21,7 +21,7 @@ from .views import home_view, register, logout_request, login_request, landing
 from main.models import Difficulty, Puzzle
 from main.views import DiffViewSet, PuzzViewSet, PuzzlePlaygrounViewSet
 from profiles.models import Profile
-from profiles.views import ProfileViewSet, SolvedByUser, HighscoreboardViewSet
+from profiles.views import ProfileViewSet, SolvedByUser, HighscoreboardViewSet, EditUserViewSet
 from rest_framework import routers, serializers, viewsets
 
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -38,6 +38,7 @@ router.register(r'puzzle/(?P<puzzleSlug>[-\w]+)', PuzzlePlaygrounViewSet, basena
 router.register(r'users/(?P<username>[-\w]+)', ProfileViewSet, basename='Profile')
 router.register(r'solved/(?P<puzzleSlug>[-\w]+)', SolvedByUser, basename='Profile')
 router.register(r'topten', HighscoreboardViewSet, basename='Profile')
+router.register(r'editUser', EditUserViewSet, basename='Profile')
 
 
 

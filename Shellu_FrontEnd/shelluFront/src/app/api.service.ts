@@ -48,6 +48,21 @@ export class ApiService {
     return this.http.get(this.baseUrl + '/api/users/' + username + '/', {headers: this.httpHeaders})
   }
 
+  editUser(Info:any, Languages:any){
+    const userdata = {
+      info: Info,
+      languages : Languages,
+    }
+    if(typeof this.token === 'undefined' || this.token === null || this.token === 'undefined'){
+      this.router.navigate(['login']);
+    }
+    return this.http.put(this.baseUrl + '/api/editUser/', userdata, {headers: this.httpHeaders});
+  }
+
+  getScores(){
+    return this.http.get(this.baseUrl + '/api/topten', {headers: this.httpHeaders})
+  }
+
   puzzleSubmit(puzzleSlug : string): Observable<any> {
     if(typeof this.token === 'undefined' || this.token === null || this.token === 'undefined'){
       this.router.navigate(['login']);

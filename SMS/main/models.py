@@ -49,3 +49,13 @@ class Puzzle(models.Model):
 	
 	def __str__(self):
 		return self.title
+
+class LearningData(models.Model):
+	title = models.CharField(max_length=200)
+	content = models.TextField(max_length=1000)
+	published = models.DateTimeField(default=datetime.now())
+	slug = models.CharField(default="learningData", max_length=100)
+
+	def __str__(self):
+		return self.title
+

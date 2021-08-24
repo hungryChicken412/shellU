@@ -3,11 +3,12 @@ from django.shortcuts import render
 from .models import Profile
 from .forms import ProfileModelForm
 from .serializers import ProfileSerializer, HighscoreSerializer
-from rest_framework import routers, serializers, viewsets
+from rest_framework import routers, serializers, viewsets, generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated 
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
 import sys
 sys.path.append('..')
 from main.models import Puzzle
@@ -100,4 +101,32 @@ class HighscoreboardViewSet(viewsets.ModelViewSet):
 	
 	authenticationClasses = (TokenAuthentication,)
 	permissionClasses = (IsAuthenticated,)
+
+class EditUserViewSet(viewsets.ModelViewSet):
+	serializer_class = HighscoreSerializer
+	def get_queryset(self):
+		users = Profile.objects.all().order_by('XP')
+		return users[::-1]
+	def put(self, request, *args, **kwargs):
+		
+		user = Profile.objects.get(user=self.request.user)
+		error = "NONE"
+		change = "NONE"
+		if (len(self.request.data) == 2):
+			try:
+				info = self.request.data['info']
+				languages = self.request.data['languages']
+				user.info = info
+				user.languages = languages
+				user.save()
+				change = "CHANGES"
+			except Exception as e:
+				
+				error = str(e)
+				
+		
+		returnData = {'username':user.username,'info': user.info, 'languages':user.languages, 'ERROR':error, 'CHANGE':change}
+		return Response(returnData)
+
+
     

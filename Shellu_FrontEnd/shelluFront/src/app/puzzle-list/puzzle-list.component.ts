@@ -9,7 +9,7 @@ import { ApiService } from '.././api.service';
 })
 export class PuzzleListComponent implements OnInit {
 
-  puzzles = [{title:'easy'},{puzzle_category:'hard'}, {puzzle_slug: 'slug'}, {content: 'content'}, {answer: 'answer'}]
+  puzzles = [{title:'easy'},{puzzle_category:'hard'}, {puzzle_slug: 'slug'}, {content: 'content'}, {answer: 'answer'}, {xps:'0'}]
 
   constructor(private api:ApiService) { 
     this.getPuzzles();

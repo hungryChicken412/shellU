@@ -1,0 +1,41 @@
+.rank{
+    text-decoration: none;
+    font-size: large;
+}
+
+.Sleepy-Baby{
+ color: aqua;   
+}
+.Basic-Teen{
+    color: rgb(0, 161, 167);   
+   }
+.Average-Nerd{
+color: rgb(134, 101, 255);   
+}
+.Script-Kiddie{
+color: rgb(123, 7, 255);   
+}
+.Master{
+color: rgb(197, 24, 146);   
+}
+.Hacker{
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+    color: rgb(245, 157, 26);   
+    transition: all 0.22s ease-in;
+}
+
+
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 10px #f59d1a, 0 0 20px #f59d1a;
+    }
+    to {
+      text-shadow: 0 0 20px #f59d1a, 0 0 30px #f59d1a;
+    }
+  }
+
+
+  

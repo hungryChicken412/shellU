@@ -40,6 +40,23 @@ body {
     border-left-color: #ff0000;
 }
 
+
+.inpu{
+  background-color: rgb(17, 22, 27);
+  border:none;
+
+  font-family: 'Josefin Sans', sans-serif;
+  
+  color:#ff0a5c;
+
+
+}
+.inpu::placeholder{
+  font-family: 'Josefin Sans', sans-serif;
+  color:#c9c9c9;
+}
+
+
 .terminal{
     margin-right: 40px;
 }
