@@ -8,9 +8,9 @@ just have to polish some things, the backend is pretty much done, only need to w
 
 ## Stack:
 - Front-End:
--- Angular, Bootstrap
+  - Angular, Bootstrap
 - Back-End:
--- Django, Django REST-api, and for compiling user code I use PISTON-API from Engineerman
+  - Django, Django REST-api, and for compiling user code I use PISTON-API from Engineerman
 
 and for sql obviosly right now it use sqlite3, but I was thinking about MYSql.
 
