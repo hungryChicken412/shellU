@@ -35,3 +35,11 @@ and for sql obviosly right now it use sqlite3, but I was thinking about MYSql.
 - Their they can Either Register or Log in (Everything till now is hosted on Django's side)
 - After Logging in, they are redirected to port 4200 and everything "frontend" from here is handled by Angular
 - I use Django-Rest-Api to handle data transfer from server side django and angular
+- Everything works right now, ready to be deployed when I add all those topics, hopefully soon :) 
+
+
+## Some more Screenshots:
+- Code Editor
+![sc1](https://user-images.githubusercontent.com/64773992/134802350-9106a753-59db-4bf5-afe0-86efd6286c58.png)
+- Learn Section, Topic: "Divide And Conquer"
+![sc2](https://user-images.githubusercontent.com/64773992/134802352-34e10a5a-3240-477a-8014-78e2573d2bbe.png)
